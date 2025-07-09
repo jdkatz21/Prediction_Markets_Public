@@ -1,0 +1,630 @@
+#!/usr/bin/python
+
+"""
+This file gives some sample sets of tickers that you might want to download.
+
+"""
+
+
+def get_tickers(ticker_desc):
+
+
+    if (ticker_desc == 'fed_levels'):
+        tickers = [
+        
+            # Jan 2022 FOMC
+            'FED-22JAN-T0.25',
+            
+            # March 2022 FOMC
+            'FED-22MAR-T0.25', 'FED-22MAR-T0.5', 'FED-22MAR-T0.75', 
+            
+            # May 2022 FOMC
+            'FED-22MAY-T0.25', 'FED-22MAY-T0.5', 'FED-22MAY-T0.75', 'FED-22MAY-T1', 
+            
+            # June 2022 FOMC
+            'FED-22JUN-T0.25', 'FED-22JUN-T0.5', 'FED-22JUN-T0.75', 'FED-22JUN-T1', 
+            'FED-22JUN-T1.25', 'FED-22JUN-T1.50', 'FED-22JUN-T1.75', 
+            
+            # July 2022 FOMC
+            'FED-22JUL-T0.25', 'FED-22JUL-T0.5', 'FED-22JUL-T0.75', 'FED-22JUL-T1', 
+            'FED-22JUL-T1.25', 'FED-22JUL-T1.50', 'FED-22JUL-T1.75', 'FED-22JUL-T2.00',
+            'FED-22JULY-T2.25', 'FED-22JULY-T2.50', 'FED-22JUL-T2.75', 'FED-22JUL-T3.00',
+            'FED-22JUL-T3.25', 'FED-22JUL-T3.50', 'FED-22JUL-T2.75',
+            
+            # September 2022 FOMC
+            'FED-22SEP-T0.25', 'FED-22SEP-T0.5', 'FED-22SEP-T0.75', 'FED-22SEP-T1',
+            'FED-22SEP-T1.25', 'FED-22SEP-T1.5', 'FED-22SEP-T1.75', 'FED-22SEP-T2.00', 
+            'FED-22SEP-T2.25', 'FED-22SEP-T2.50', 'FED-22SEP-T2.75', 'FED-22SEP-T3.00',
+            'FED-22SEP-T3.25', 'FED-22SEP-T3.50', 
+            
+            # November 2022 FOMC
+            'FED-22NOV-T0.25', 'FED-22NOV-T0.5', 'FED-22NOV-T0.75', 'FED-22NOV-T1',
+            'FED-22NOV-T1.25', 'FED-22NOV-T1.5', 'FED-22NOV-T1.75', 'FED-22NOV-T2.00',
+            'FED-22NOV-T2.25', 'FED-22NOV-T2.50', 'FED-22NOV-T2.75', 'FED-22NOV-T3.00',
+            'FED-22NOV-T3.25', 'FED-22NOV-T3.50', 'FED-22NOV-T2.75', 'FED-22NOV-T3.00',
+            'FED-22NOV-T3.25', 'FED-22NOV-T3.50', 'FED-22NOV-T3.75', 'FED-22NOV-T4.00',
+            
+            # December 2022 FOMC
+            'FED-22DEC-T0.25', 'FED-22DEC-T0.5', 'FED-22DEC-T0.75', 'FED-22DEC-T1',
+            'FED-22DEC-T1.25', 'FED-22DEC-T1.5', 'FED-22DEC-T1.75', 'FED-22DEC-T2.0',
+            'FED-22DEC-T2.25', 'FED-22DEC-T2.50', 'FED-22DEC-T2.75', 'FED-22DEC-T3.00',
+            'FED-22DEC-T3.25', 'FED-22DEC-T3.50', 'FED-22DEC-T2.75', 'FED-22DEC-T3.00',
+            'FED-22DEC-T3.25', 'FED-22DEC-T3.50', 'FED-22DEC-T3.75', 'FED-22DEC-T4.00',
+            'FED-22DEC-T4.25', 'FED-22DEC-T4.50', 'FED-22DEC-T4.75', 'FED-22DEC-T5.00',
+            'FED-22DEC-T5.25', 'FED-22DEC-T5.50', 'FED-22DEC-T5.75', 'FED-22DEC-T6.00',  
+            
+            # February 2023 FOMC
+            'FED-23FEB-T1.75', 'FED-23FEB-T2.00', 'FED-23FEB-T2.25', 'FED-23FEB-T2.50',
+            'FED-23FEB-T2.75', 'FED-23FEB-T3.00', 'FED-23FEB-T3.25', 'FED-23FEB-T3.50',
+            'FED-23FEB-T3.75', 'FED-23FEB-T4.00', 'FED-23FEB-T4.25', 'FED-23FEB-T4.50',
+            'FED-23FEB-T4.75', 'FED-23FEB-T5.00', 'FED-23FEB-T5.25', 
+            
+            # March 2023 FOMC
+            'FED-23MAR-T3.00', 'FED-23MAR-T3.25', 'FED-23MAR-T3.50', 'FED-23MAR-T3.75',
+            'FED-23MAR-T4.00', 'FED-23MAR-T4.25', 'FED-23MAR-T4.50', 'FED-23MAR-T4.75',
+            'FED-23MAR-T5.00', 'FED-23MAR-T5.25',  'FED-23MAR-T5.50', 'FED-23MAR-T5.75',
+            'FED-23MAR-T6.00', 'FED-23MAR-T6.25', 'FED-23MAR-T6.50', 
+            
+            # May 2023 FOMC
+            'FED-23MAY-T3.00', 'FED-23MAY-T3.25', 'FED-23MAY-T3.50', 'FED-23MAY-T3.75',
+            'FED-23MAY-T4.00', 'FED-23MAY-T4.25', 'FED-23MAY-T4.50', 'FED-23MAY-T4.75',
+            'FED-23MAY-T5.00', 'FED-23MAY-T5.25',  'FED-23MAY-T5.50', 'FED-23MAY-T5.75',
+            'FED-23MAY-T6.00', 'FED-23MAY-T6.25', 'FED-23MAY-T6.50', 
+            
+            # June 2023 FOMC
+            'FED-23JUN-T3.00', 'FED-23JUN-T3.25', 'FED-23JUN-T3.50', 'FED-23JUN-T3.75',
+            'FED-23JUN-T4.00', 'FED-23JUN-T4.25', 'FED-23JUN-T4.50', 'FED-23JUN-T4.75',
+            'FED-23JUN-T5.00', 'FED-23JUN-T5.25',  'FED-23JUN-T5.50', 'FED-23JUN-T5.75',
+            'FED-23JUN-T6.00', 'FED-23JUN-T6.25', 'FED-23JUN-T6.50', 
+            
+            # July 2023 FOMC
+            'FED-23JUL-T3.00', 'FED-23JUL-T3.25', 'FED-23JUL-T3.50', 'FED-23JUL-T3.75',
+            'FED-23JUL-T4.00', 'FED-23JUL-T4.25', 'FED-23JUL-T4.50', 'FED-23JUL-T4.75',
+            'FED-23JUL-T5.00', 'FED-23JUL-T5.25',  'FED-23JUL-T5.50', 'FED-23JUL-T5.75',
+            'FED-23JUL-T6.00', 'FED-23JUL-T6.25', 'FED-23JUL-T6.50', 
+            
+            # September 2023 FOMC
+            'FED-23SEP-T3.00', 'FED-23SEP-T3.25', 'FED-23SEP-T3.50', 'FED-23SEP-T3.75',
+            'FED-23SEP-T4.00', 'FED-23SEP-T4.25', 'FED-23SEP-T4.50', 'FED-23SEP-T4.75',
+            'FED-23SEP-T5.00', 'FED-23SEP-T5.25',  'FED-23SEP-T5.50', 'FED-23SEP-T5.75',
+            'FED-23SEP-T6.00', 'FED-23SEP-T6.25', 'FED-23SEP-T6.50', 
+            
+            # November 2023 FOMC
+            'FED-23NOV-T3.00', 'FED-23NOV-T3.25', 'FED-23NOV-T3.50', 'FED-23NOV-T3.75',
+            'FED-23NOV-T4.00', 'FED-23NOV-T4.25', 'FED-23NOV-T4.50', 'FED-23NOV-T4.75',
+            'FED-23NOV-T5.00', 'FED-23NOV-T5.25',  'FED-23NOV-T5.50', 'FED-23NOV-T5.75',
+            'FED-23NOV-T6.00', 'FED-23NOV-T6.25', 'FED-23NOV-T6.50', 
+            
+            # December 2023 FOMC
+            'FED-23DEC-T3.00', 'FED-23DEC-T3.25', 'FED-23DEC-T3.50', 'FED-23DEC-T3.75',
+            'FED-23DEC-T4.00', 'FED-23DEC-T4.25', 'FED-23DEC-T4.50', 'FED-23DEC-T4.75',
+            'FED-23DEC-T5.00', 'FED-23DEC-T5.25',  'FED-23DEC-T5.50', 'FED-23DEC-T5.75',
+            'FED-23DEC-T6.00', 'FED-23DEC-T6.25', 'FED-23DEC-T6.50', 
+            
+            # January 2024 FOMC
+            'FED-24JAN-T5.00', 'FED-24JAN-T5.25', 'FED-24JAN-T5.50', 'FED-24JAN-T5.75',
+            'FED-24JAN-T6.00',  'FED-24JAN-T6.25',  'FED-24JAN-T6.50',
+            
+            # February 2024 FOMC
+            'FED-24MAR-T4.50', 'FED-24MAR-T4.75', 'FED-24MAR-T5.00', 'FED-24MAR-T5.25',
+            'FED-24MAR-T5.50', 'FED-24MAR-T5.75', 'FED-24MAR-T6.00',  
+            
+            # March 2024 FOMC
+            'FED-24MAY-T4.25', 'FED-24MAY-T4.50', 'FED-24MAY-T4.75', 'FED-24MAY-T5.00',
+            'FED-24MAY-T5.25', 'FED-24MAY-T5.50', 'FED-24MAY-T5.75', 
+            
+            # June 2024 FOMC
+            'FED-24JUN-T4.00', 'FED-24JUN-T4.25', 'FED-24JUN-T4.50', 'FED-24JUN-T4.75',
+            'FED-24JUN-T5.00', 'FED-24JUN-T5.25', 'FED-24JUN-T5.50',
+            
+            # July 2024 FOMC
+            'FED-24JUL-T4.00', 'FED-24JUL-T4.25', 'FED-24JUL-T4.50', 'FED-24JUL-T4.75',
+            'FED-24JUL-T5.00', 'FED-24JUL-T5.25', 'FED-24JUL-T5.50',
+            
+            # September 2024 FOMC
+            'FED-24SEP-T3.75', 'FED-24SEP-T4.00', 'FED-24SEP-T4.25', 'FED-24SEP-T4.50',
+            'FED-24SEP-T4.75', 'FED-24SEP-T5.00', 'FED-24SEP-T5.25', 'FED-24SEP-T5.50', 
+            
+            # November 2024 FOMC
+            'FED-24NOV-T3.50', 'FED-24NOV-T3.75', 'FED-24NOV-T4.00', 'FED-24NOV-T4.25',
+            'FED-24NOV-T4.50', 'FED-24NOV-T4.75', 'FED-24SEP-T5.00', 'FED-24NOV-T5.25',
+            'FED-24NOV-T5.50',
+            
+            # December 2024 FOMC
+            'FED-24DEC-T3.25', 'FED-24DEC-T3.50', 'FED-24DEC-T3.75', 'FED-24DEC-T4.00',
+            'FED-24DEC-T4.25', 'FED-24DEC-T4.50', 'FED-24DEC-T4.75', 'FED-24DEC-T5.00',
+            'FED-24DEC-T5.25', 'FED-24DEC-T5.50',
+            
+            # January 2025 FOMC
+            'FED-25JAN-T3.25', 'FED-25JAN-T3.50', 'FED-25JAN-T3.75', 'FED-25JAN-T4.00',
+            'FED-25JAN-T4.25', 'FED-25JAN-T4.50', 'FED-25JAN-T4.75', 'FED-22JAN-T5.00',
+            'FED-25JAN-T5.25', 'FED-25JAN-T5.50',   
+            
+            # March 2025 FOMC
+            'FED-25MAR-T2.75', 'FED-25MAR-T3.00', 'FED-25MAR-T3.25', 'FED-25MAR-T3.50',
+            'FED-25MAR-T3.75', 'FED-25MAR-T4.00', 'FED-25MAR-T4.25', 'FED-25MAR-T4.50',
+            'FED-25MAR-T4.75', 'FED-25MAR-T5.00', 'FED-25MAR-T5.25', 
+            
+            # May 2025 FOMC
+            'FED-25MAY-T2.75', 'FED-25MAY-T3.00', 'FED-25MAY-T3.25', 'FED-25MAY-T3.50',
+            'FED-25MAY-T3.75', 'FED-25MAY-T4.00', 'FED-25MAY-T4.25', 'FED-25MAY-T4.50',
+            'FED-25MAY-T4.75', 'FED-25MAY-T5.00', 'FED-25MAY-T5.25',
+            
+            # June 2025 FOMC
+            'FED-25JUN-T2.75', 'FED-25JUN-T3.00', 'FED-25JUN-T3.25', 'FED-25JUN-T3.50',
+            'FED-25JUN-T3.75', 'FED-25JUN-T4.00', 'FED-25JUN-T4.25', 'FED-25JUN-T4.50',
+            'FED-25JUN-T4.75', 'FED-25JUN-T5.00', 'FED-25JUN-T5.25', 
+            
+            # July 2025 FOMC
+            'FED-25JUL-T2.75', 'FED-25JUL-T3.00', 'FED-25JUL-T3.25', 'FED-25JUL-T3.50',
+            'FED-25JUL-T3.75', 'FED-25JUL-T4.00', 'FED-25JUL-T4.25', 'FED-25JUL-T4.50',
+            'FED-25JUL-T4.75', 'FED-25JUL-T5.00', 'FED-25JUL-T5.25', 'FED-25JUL-T5.50',
+            'FED-25JUL-T5.75', 'FED-25JUL-T6.00',  
+            
+            # September 2025 FOMC
+            'FED-25SEP-T2.75', 'FED-25SEP-T3.00', 'FED-25SEP-T3.25', 'FED-25SEP-T3.50',
+            'FED-25SEP-T3.75', 'FED-25SEP-T4.00', 'FED-25SEP-T4.25', 'FED-25SEP-T4.50',
+            'FED-25SEP-T4.75', 'FED-25SEP-T5.00', 'FED-25SEP-T5.25', 'FED-25SEP-T5.50',
+            'FED-25SEP-T5.75', 'FED-25SEP-T6.00',  
+            
+            # October 2025 FOMC
+            'FED-25OCT-T2.75', 'FED-25OCT-T3.00', 'FED-25OCT-T3.25', 'FED-25OCT-T3.50',
+            'FED-25OCT-T3.75', 'FED-25OCT-T4.00', 'FED-25OCT-T4.25', 'FED-25OCT-T4.50',
+            'FED-25OCT-T4.75', 'FED-25OCT-T5.00', 'FED-25OCT-T5.25', 'FED-25OCT-T5.50',
+            'FED-25OCT-T5.75', 'FED-25OCT-T6.00',  
+            
+            # December 2025 FOMC
+            'FED-25DEC-T2.75', 'FED-25DEC-T3.00', 'FED-25DEC-T3.25', 'FED-25DEC-T3.50',
+            'FED-25DEC-T3.75', 'FED-25DEC-T4.00', 'FED-25DEC-T4.25', 'FED-25DEC-T4.50',
+            'FED-25DEC-T4.75', 'FED-25DEC-T5.00', 'FED-25DEC-T5.25', 'FED-25DEC-T5.50',
+            'FED-25DEC-T5.75', 'FED-25DEC-T6.00'
+        ]
+        
+    elif (ticker_desc == 'fed_decisions'):
+        
+        tickers = [
+            
+            # May 2023 FOMC
+             'FEDDECISION-23MAY-TC25', 'FEDDECISION-23MAY-C25', 'FEDDECISION-23MAY-H0', 'FEDDECISION-23MAY-H25',  'FEDDECISION-23MAY-TH50', 
+            
+            # June 2023 FOMC             
+             'FEDDECISION-23JUN-C>25', 'FEDDECISION-23JUN-C25', 'FEDDECISION-23JUN-H0', 'FEDDECISION-23JUN-H25',  'FEDDECISION-23JUN-H>25',
+             
+            # July 2023 FOMC
+             'FEDDECISION-23JUL-C>25', 'FEDDECISION-23JUL-C25', 'FEDDECISION-23JUL-H0', 'FEDDECISION-23JUL-H25',  'FEDDECISION-23JUL-H>25',
+             
+            # September 2023 FOMC
+             'FEDDECISION-23SEP-C>25', 'FEDDECISION-23SEP-C25', 'FEDDECISION-23SEP-H0', 'FEDDECISION-23SEP-H25',  'FEDDECISION-23SEP-H>25',
+             
+            # November 2023 FOMC
+             'FEDDECISION-23NOV-C26', 'FEDDECISION-23NOV-C25', 'FEDDECISION-23NOV-H0', 'FEDDECISION-23NOV-H25',  'FEDDECISION-23NOV-H26',
+             
+            # December 2023 FOMC
+             'FEDDECISION-23DEC-C24', 'FEDDECISION-23DEC-C25', 'FEDDECISION-23DEC-H0', 'FEDDECISION-23DEC-H25',  'FEDDECISION-23DEC-H26',
+             
+            # January 2024 FOMC
+             'FEDDECISION-24JAN31-C26', 'FEDDECISION-24JAN31-TC25', 'FEDDECISION-24JAN31-H0', 'FEDDECISION-24JAN31-H25',  'FEDDECISION-24JAN31-H26',
+             
+            # March 2024 FOMC
+             'FEDDECISION-24MAR20-C26', 'FEDDECISION-24MAR20-C25', 'FEDDECISION-24MAR20-H0', 'FEDDECISION-24MAR20-H25',  'FEDDECISION-24MAR20-H26',
+             
+            # May 2024 FOMC
+             'FEDDECISION-24MAY-C26', 'FEDDECISION-24MAY-C25', 'FEDDECISION-24MAY-H0', 'FEDDECISION-24MAY-H25',  'FEDDECISION-24MAY-H26',
+             
+            # June 2024 FOMC
+             'FEDDECISION-24JUN-C26', 'FEDDECISION-24JUN-C25', 'FEDDECISION-24JUN-H0', 'FEDDECISION-24JUN-H25',  'FEDDECISION-24JUN-H26',
+             
+            # July 2024 FOMC
+             'FEDDECISION-24JUL-C26', 'FEDDECISION-24JUL-C25', 'FEDDECISION-24JUL-H0', 'FEDDECISION-24JUL-H25',  'FEDDECISION-24JUL-H26',
+             
+            # September 2024 FOMC
+             'FEDDECISION-24SEP-C26', 'FEDDECISION-24SEP-C25', 'FEDDECISION-24SEP-H0', 'FEDDECISION-24SEP-H25',  'FEDDECISION-24SEP-H26',
+             
+            # November 2024 FOMC
+             'FEDDECISION-24NOV-C26', 'FEDDECISION-24NOV-C25', 'FEDDECISION-24NOV-H0', 'FEDDECISION-24NOV-H25',  'FEDDECISION-24NOV-H26',
+             
+            # December 2024 FOMC
+             'KXFEDDECISION-24DEC-C26', 'KXFEDDECISION-24DEC-C25', 'KXFEDDECISION-24DEC-H0', 'KXFEDDECISION-24DEC-H25',  'KXFEDDECISION-24DEC-H26',
+             
+            # January 2025 FOMC
+             'KXFEDDECISION-25JAN-C26', 'KXFEDDECISION-25JAN-C25', 'KXFEDDECISION-25JAN-H0', 'KXFEDDECISION-25JAN-H25',  'KXFEDDECISION-25JAN-H26',
+             
+            # March 2025 FOMC
+             'KXFEDDECISION-25MAR-C26', 'KXFEDDECISION-25MAR-C25', 'KXFEDDECISION-25MAR-H0', 'KXFEDDECISION-25MAR-H25',  'KXFEDDECISION-25MAR-H26',
+             
+            # May 2025 FOMC
+             'KXFEDDECISION-25MAY-C26', 'KXFEDDECISION-25MAY-C25', 'KXFEDDECISION-25MAY-H0', 'KXFEDDECISION-25MAY-H25',  'KXFEDDECISION-25MAY-H26',
+             
+            # June 2025 FOMC
+             'KXFEDDECISION-25JUN-C26', 'KXFEDDECISION-25JUN-C25', 'KXFEDDECISION-25JUN-H0', 'KXFEDDECISION-25JUN-H25',  'KXFEDDECISION-25JUN-H26',
+             
+            # July 2025 FOMC
+             'KXFEDDECISION-25JUL-C26', 'KXFEDDECISION-25JUL-C25', 'KXFEDDECISION-25JUL-H0', 'KXFEDDECISION-25JUL-H25',  'KXFEDDECISION-25JUL-H26',
+        ] 
+        
+    elif (ticker_desc == 'headline_cpi_releases'):
+            
+        tickers = [
+            
+            # November 2022 CPI
+            'CPIYOY-22NOV-T6.9', 'CPIYOY-22NOV-T7.0', 'CPIYOY-22NOV-T7.1', 
+            'CPIYOY-22NOV-T7.2', 'CPIYOY-22NOV-T7.3', 'CPIYOY-22NOV-T7.4', 
+            'CPIYOY-22NOV-T7.5', 'CPIYOY-22NOV-T7.6', 'CPIYOY-22NOV-T7.7', 
+            'CPIYOY-22NOV-T7.8', 'CPIYOY-22NOV-T7.9', 'CPIYOY-22NOV-T8.0',
+            
+            # December 2022 CPI
+            'CPIYOY-22DEC-T6.0', 'CPIYOY-22DEC-T6.1', 'CPIYOY-22DEC-T6.2',
+            'CPIYOY-22DEC-T6.3', 'CPIYOY-22DEC-T6.4', 'CPIYOY-22DEC-T6.5',
+            'CPIYOY-22DEC-T6.6', 'CPIYOY-22DEC-T6.7', 'CPIYOY-22DEC-T6.8', 
+            'CPIYOY-22DEC-T6.9', 'CPIYOY-22DEC-T7.0', 'CPIYOY-22DEC-T7.1',
+            'CPIYOY-22DEC-T7.2', 'CPIYOY-22DEC-T7.3', 'CPIYOY-22DEC-T7.4',
+            
+            # January 2023 CPI
+            'CPIYOY-23JAN-T5.4', 'CPIYOY-23JAN-T5.5', 'CPIYOY-23JAN-T5.6',
+            'CPIYOY-23JAN-T5.7', 'CPIYOY-23JAN-T5.8', 'CPIYOY-23JAN-T5.9', 
+            'CPIYOY-23JAN-T6.0', 'CPIYOY-23JAN-T6.1', 'CPIYOY-23JAN-T6.2',
+            'CPIYOY-23JAN-T6.3', 'CPIYOY-23JAN-T6.4', 'CPIYOY-23JAN-T6.5', 
+            'CPIYOY-23JAN-T6.6', 'CPIYOY-23JAN-T6.7', 'CPIYOY-23JAN-T6.8',
+            
+            # February 2023 CPI
+            'CPIYOY-23FEB-T4.4', 'CPIYOY-23FEB-T4.5', 'CPIYOY-23FEB-T4.6', 
+            'CPIYOY-23FEB-T4.7', 'CPIYOY-23FEB-T4.8', 'CPIYOY-23FEB-T4.9', 
+            'CPIYOY-23FEB-T5.0', 'CPIYOY-23FEB-T5.1', 'CPIYOY-23FEB-T5.2', 
+            'CPIYOY-23FEB-T5.3', 'CPIYOY-23FEB-T5.4', 'CPIYOY-23FEB-T5.5',
+            'CPIYOY-23FEB-T5.6', 'CPIYOY-23FEB-T5.7', 'CPIYOY-23FEB-T5.8', 
+            'CPIYOY-23FEB-T5.9', 'CPIYOY-23FEB-T6.0', 'CPIYOY-23FEB-T6.1', 
+            'CPIYOY-23FEB-T6.2', 'CPIYOY-23FEB-T6.3', 'CPIYOY-23FEB-T6.4', 
+            'CPIYOY-23FEB-T6.5',
+            
+            # March 2023 CPI
+            'CPIYOY-23MAR-T3.8', 'CPIYOY-23MAR-T3.9', 'CPIYOY-23MAR-T4.0', 
+            'CPIYOY-23MAR-T4.1', 'CPIYOY-23MAR-T4.2', 'CPIYOY-23MAR-T4.3', 
+            'CPIYOY-23MAR-T4.4', 'CPIYOY-23MAR-T4.5', 'CPIYOY-23MAR-T4.6', 
+            'CPIYOY-23MAR-T4.7', 'CPIYOY-23MAR-T4.8', 'CPIYOY-23MAR-T4.9', 
+            'CPIYOY-23MAR-T5.0', 'CPIYOY-23MAR-T5.1', 'CPIYOY-23MAR-T5.2',
+            'CPIYOY-23MAR-T5.3', 'CPIYOY-23MAR-T5.4', 'CPIYOY-23MAR-T5.5', 
+            'CPIYOY-23MAR-T5.6', 'CPIYOY-23MAR-T5.7', 'CPIYOY-23MAR-T5.8', 
+            'CPIYOY-23MAR-T5.9',
+            
+            # April 2023 CPI
+            'CPIYOY-23APR-T3.4', 'CPIYOY-23APR-T3.5', 'CPIYOY-23APR-T3.6', 
+            'CPIYOY-23APR-T3.7', 'CPIYOY-23APR-T3.8', 'CPIYOY-23APR-T3.9', 
+            'CPIYOY-23APR-T4.0', 'CPIYOY-23APR-T4.1', 'CPIYOY-23APR-T4.2',
+            'CPIYOY-23APR-T4.3', 'CPIYOY-23APR-T4.4', 'CPIYOY-23APR-T4.5',
+            'CPIYOY-23APR-T4.6', 'CPIYOY-23APR-T4.7', 'CPIYOY-23APR-T4.8',
+            'CPIYOY-23APR-T4.9', 'CPIYOY-23APR-T5.0', 'CPIYOY-23APR-T5.1',
+            'CPIYOY-23APR-T5.2', 'CPIYOY-23APR-T5.3', 'CPIYOY-23APR-T5.4',
+            'CPIYOY-23APR-T5.5', 
+            
+            # May 2023 CPI
+            'CPIYOY-23MAY-T3.3', 'CPIYOY-23MAY-T3.4', 'CPIYOY-23MAY-T3.5', 
+            'CPIYOY-23MAY-T3.6', 'CPIYOY-23MAY-T3.7', 'CPIYOY-23MAY-T3.8', 
+            'CPIYOY-23MAY-T3.9', 'CPIYOY-23MAY-T4.0', 'CPIYOY-23MAY-T4.1', 
+            'CPIYOY-23MAY-T4.2', 'CPIYOY-23MAY-T4.3', 'CPIYOY-23MAY-T4.4', 
+            'CPIYOY-23MAY-T4.5', 'CPIYOY-23MAY-T4.6', 'CPIYOY-23MAY-T4.7',
+            
+            # June 2023 CPI
+            'CPIYOY-23JUN-T2.7', 'CPIYOY-23JUN-T2.8', 'CPIYOY-23JUN-T2.9', 
+            'CPIYOY-23JUN-T3.0', 'CPIYOY-23JUN-T3.1', 'CPIYOY-23JUN-T3.2', 
+            'CPIYOY-23JUN-T3.3', 'CPIYOY-23JUN-T3.4', 'CPIYOY-23JUN-T3.5', 
+            'CPIYOY-23JUN-T3.6', 'CPIYOY-23JUN-T3.7', 'CPIYOY-23JUN-T3.8', 
+            'CPIYOY-23JUN-T3.9', 'CPIYOY-23JUN-T4.0', 'CPIYOY-23JUN-T4.1',
+            'CPIYOY-23JUN-T4.2', 'CPIYOY-23JUN-T4.3', 'CPIYOY-23JUN-T4.4',
+            'CPIYOY-23JUN-T4.5', 'CPIYOY-23JUN-T4.6', 'CPIYOY-23JUN-T4.7',
+            
+            # July 2023 CPI
+            'CPIYOY-23JUL-T2.0', 'CPIYOY-23JUL-T2.1', 'CPIYOY-23JUL-T2.2', 
+            'CPIYOY-23JUL-T2.3', 'CPIYOY-23JUL-T2.4', 'CPIYOY-23JUL-T2.5', 
+            'CPIYOY-23JUL-T2.6', 'CPIYOY-23JUL-T2.7', 'CPIYOY-23JUL-T2.8', 
+            'CPIYOY-23JUL-T2.9', 'CPIYOY-23JUL-T3.0', 'CPIYOY-23JUL-T3.1', 
+            'CPIYOY-23JUL-T3.2', 'CPIYOY-23JUL-T3.3', 'CPIYOY-23JUL-T3.4',
+            'CPIYOY-23JUL-T3.5', 'CPIYOY-23JUL-T3.6', 'CPIYOY-23JUL-T3.7', 
+            'CPIYOY-23JUL-T3.8', 'CPIYOY-23JUL-T3.9', 'CPIYOY-23JUL-T4.0', 
+            'CPIYOY-23JUL-T4.1', 
+            
+            # August 2023 CPI
+            'CPIYOY-23AUG-T2.8', 'CPIYOY-23AUG-T2.9', 'CPIYOY-23AUG-T3.0', 
+            'CPIYOY-23AUG-T3.1', 'CPIYOY-23AUG-T3.2', 'CPIYOY-23AUG-T3.3', 
+            'CPIYOY-23AUG-T3.4', 'CPIYOY-23AUG-T3.5', 'CPIYOY-23AUG-T3.6', 
+            'CPIYOY-23AUG-T3.7', 'CPIYOY-23AUG-T3.8', 'CPIYOY-23AUG-T3.9', 
+            'CPIYOY-23AUG-T4.0', 'CPIYOY-23AUG-T4.1', 'CPIYOY-23AUG-T4.2',
+            
+            # September 2023 CPI
+            'CPIYOY-23SEP-T2.6', 'CPIYOY-23SEP-T2.7', 'CPIYOY-23SEP-T2.8', 
+            'CPIYOY-23SEP-T2.9', 'CPIYOY-23SEP-T3.0', 'CPIYOY-23SEP-T3.1', 
+            'CPIYOY-23SEP-T3.2', 'CPIYOY-23SEP-T3.3', 'CPIYOY-23SEP-T3.4', 
+            'CPIYOY-23SEP-T3.5', 'CPIYOY-23SEP-T3.6', 'CPIYOY-23SEP-T3.7', 
+            'CPIYOY-23SEP-T3.8', 'CPIYOY-23SEP-T3.9', 'CPIYOY-23SEP-T4.0', 
+            
+            # October 2023 CPI
+            'CPIYOY-23OCT-T2.6', 'CPIYOY-23OCT-T2.7', 'CPIYOY-23OCT-T2.8', 
+            'CPIYOY-23OCT-T2.9', 'CPIYOY-23OCT-T3.0', 'CPIYOY-23OCT-T3.1', 
+            'CPIYOY-23OCT-T3.2', 'CPIYOY-23OCT-T3.3', 'CPIYOY-23OCT-T3.4', 
+            'CPIYOY-23OCT-T3.5', 'CPIYOY-23OCT-T3.6', 'CPIYOY-23OCT-T3.7', 
+            'CPIYOY-23OCT-T3.8', 'CPIYOY-23OCT-T3.9', 'CPIYOY-23OCT-T4.0', 
+            
+            # November 2023 CPI
+            'CPIYOY-23NOV-T2.6', 'CPIYOY-23NOV-T2.7', 'CPIYOY-23NOV-T2.8', 
+            'CPIYOY-23NOV-T2.9', 'CPIYOY-23NOV-T3.0', 'CPIYOY-23NOV-T3.1', 
+            'CPIYOY-23NOV-T3.2', 'CPIYOY-23NOV-T3.3', 'CPIYOY-23NOV-T3.4',
+            'CPIYOY-23NOV-T3.5', 'CPIYOY-23NOV-T3.6', 'CPIYOY-23NOV-T3.7',
+            'CPIYOY-23NOV-T3.8', 'CPIYOY-23NOV-T3.9', 'CPIYOY-23NOV-T4.0',
+            
+            # December 2023 CPI
+            'CPIYOY-23DEC-T2.8', 'CPIYOY-23DEC-T2.9', 'CPIYOY-23DEC-T3.0',
+            'CPIYOY-23DEC-T3.1', 'CPIYOY-23DEC-T3.2', 'CPIYOY-23DEC-T3.3', 
+            'CPIYOY-23DEC-T3.4',
+            
+            # January 2024 CPI
+            'CPIYOY-24JAN-T2.8', 'CPIYOY-24JAN-T2.9', 'CPIYOY-24JAN-T3.0', 
+            'CPIYOY-24JAN-T3.1', 'CPIYOY-24JAN-T3.2', 'CPIYOY-24JAN-T3.3', 
+            'CPIYOY-24JAN-T3.4', 'CPIYOY-24JAN-T3.5', 'CPIYOY-24JAN-T3.6',
+            'CPIYOY-24JAN-T3.7',
+            
+            # February 2024 CPI
+            'CPIYOY-24FEB-T2.5', 'CPIYOY-24FEB-T2.6', 'CPIYOY-24FEB-T2.7', 
+            'CPIYOY-24FEB-T2.8', 'CPIYOY-24FEB-T2.9', 'CPIYOY-24FEB-T3.0',
+            'CPIYOY-24FEB-T3.1', 'CPIYOY-24FEB-T3.2', 'CPIYOY-24FEB-T3.3',
+            'CPIYOY-24FEB-T3.4', 'CPIYOY-24FEB-T3.5', 'CPIYOY-24FEB-T3.6',
+            'CPIYOY-24FEB-T3.7',
+            
+            # March 2024 CPI
+            'CPIYOY-24MAR-T2.8', 'CPIYOY-24MAR-T2.9', 'CPIYOY-24MAR-T3.0', 
+            'CPIYOY-24MAR-T3.1', 'CPIYOY-24MAR-T3.2', 'CPIYOY-24MAR-T3.3', 
+            'CPIYOY-24MAR-T3.4', 'CPIYOY-24MAR-T3.5',
+            
+            # April 2024 CPI
+            'CPIYOY-24APR-T2.8', 'CPIYOY-24APR-T2.9', 'CPIYOY-24APR-T3.0',
+            'CPIYOY-24APR-T3.1', 'CPIYOY-24APR-T3.2', 'CPIYOY-24APR-T3.3',
+            'CPIYOY-24APR-T3.4', 'CPIYOY-24APR-T3.5', 'CPIYOY-24APR-T3.6',
+            'CPIYOY-24APR-T3.7', 'CPIYOY-24APR-T3.8', 
+            
+            # May 2024 CPI
+            'CPIYOY-24MAY-T3.0', 'CPIYOY-24MAY-T3.1', 'CPIYOY-24MAY-T3.2', 
+            'CPIYOY-24MAY-T3.3', 'CPIYOY-24MAY-T3.4', 'CPIYOY-24MAY-T3.5', 
+            'CPIYOY-24MAY-T3.6', 'CPIYOY-24MAY-T3.7', 'CPIYOY-24MAY-T3.8', 
+            'CPIYOY-24MAY-T3.9', 
+            
+            # June 2024 CPI
+            'CPIYOY-24JUN-T2.8', 'CPIYOY-24JUN-T2.9', 'CPIYOY-24JUN-T3.0',
+            'CPIYOY-24JUN-T3.1', 'CPIYOY-24JUN-T3.2', 'CPIYOY-24JUN-T3.3',
+            'CPIYOY-24JUN-T3.4', 'CPIYOY-24JUN-T3.5', 'CPIYOY-24JUN-T3.6',
+            'CPIYOY-24JUN-T3.7', 'CPIYOY-24JUN-T3.8', 
+            
+            # July 2024 CPI
+            'CPIYOY-24JUL-T2.7', 'CPIYOY-24JUL-T2.8', 'CPIYOY-24JUL-T2.9',
+            'CPIYOY-24JUL-T3.0', 'CPIYOY-24JUL-T3.1', 'CPIYOY-24JUL-T3.2', 
+            'CPIYOY-24JUL-T3.3', 'CPIYOY-24JUL-T3.4', 'CPIYOY-24JUL-T3.5', 
+            'CPIYOY-24JUL-T3.6', 'CPIYOY-24JUL-T3.7', 'CPIYOY-24JUL-T3.8',
+            
+            # August 2024 CPI
+            'CPIYOY-24AUG-T2.3', 'CPIYOY-24AUG-T2.4', 'CPIYOY-24AUG-T2.5',
+            'CPIYOY-24AUG-T2.6', 'CPIYOY-24AUG-T2.7', 'CPIYOY-24AUG-T2.8',
+            'CPIYOY-24AUG-T2.9', 'CPIYOY-24AUG-T3.0', 'CPIYOY-24AUG-T3.1', 
+            
+            # September 2024 CPI
+            'CPIYOY-24SEP-T2.0', 'CPIYOY-24SEP-T2.1', 'CPIYOY-24SEP-T2.2', 
+            'CPIYOY-24SEP-T2.3', 'CPIYOY-24SEP-T2.4', 'CPIYOY-24SEP-T2.5',
+            'CPIYOY-24SEP-T2.6', 'CPIYOY-24SEP-T2.7', 'CPIYOY-24SEP-T2.8',
+            'CPIYOY-24SEP-T2.9', 'CPIYOY-24SEP-T3.0', 'CPIYOY-24SEP-T3.1',
+            
+            # October 2024 CPI
+            'CPIYOY-24OCT-T2.3', 'CPIYOY-24OCT-T2.4', 'CPIYOY-24OCT-T2.5', 
+            'CPIYOY-24OCT-T2.6', 'CPIYOY-24OCT-T2.7', 'CPIYOY-24OCT-T2.8',
+            'CPIYOY-24OCT-T2.9', 'CPIYOY-24OCT-T3.0', 'CPIYOY-24OCT-T3.1', 
+            
+            # November 2024 CPI
+            'KXCPIYOY-24NOV-T2.1', 'KXCPIYOY-24NOV-T2.2', 'KXCPIYOY-24NOV-T2.3',
+            'KXCPIYOY-24NOV-T2.4', 'KXCPIYOY-24NOV-T2.5', 'KXCPIYOY-24NOV-T2.6',
+            'KXCPIYOY-24NOV-T2.7', 'KXCPIYOY-24NOV-T2.8', 'KXCPIYOY-24NOV-T2.9',
+            'KXCPIYOY-24NOV-T3.0',
+            
+            # December 2024 CPI
+            'KXCPIYOY-24DEC-T2.0', 'KXCPIYOY-24DEC-T2.1', 'KXCPIYOY-24DEC-T2.2',
+            'KXCPIYOY-24DEC-T2.3', 'KXCPIYOY-24DEC-T2.4', 'KXCPIYOY-24DEC-T2.5',
+            'KXCPIYOY-24DEC-T2.6', 'KXCPIYOY-24DEC-T2.7', 'KXCPIYOY-24DEC-T2.8',
+            'KXCPIYOY-24DEC-T2.9', 'KXCPIYOY-24DEC-T3.0',
+            
+            # January 2025 CPI
+            'KXCPIYOY-25JAN-T1.8', 'KXCPIYOY-25JAN-T1.9' 'KXCPIYOY-25JAN-T2.0',
+            'KXCPIYOY-25JAN-T2.1', 'KXCPIYOY-25JAN-T2.2', 'KXCPIYOY-25JAN-T2.3',
+            'KXCPIYOY-25JAN-T2.4', 'KXCPIYOY-25JAN-T2.5', 'KXCPIYOY-25JAN-T2.6',
+            'KXCPIYOY-25JAN-T2.7', 'KXCPIYOY-25JAN-T2.8', 'KXCPIYOY-25JAN-T2.9',
+            'KXCPIYOY-25JAN-T3.0', 'KXCPIYOY-25JAN-T3.1',
+            
+            # February 2025 CPI
+            'KXCPIYOY-25FEB-T2.4', 'KXCPIYOY-25FEB-T2.5', 'KXCPIYOY-25FEB-T2.6', 
+            'KXCPIYOY-25FEB-T2.7', 'KXCPIYOY-25FEB-T2.8', 'KXCPIYOY-25FEB-T2.9', 
+            'KXCPIYOY-25FEB-T3.0', 'KXCPIYOY-25FEB-T3.1',
+            
+            # March 2025 CPI
+            'KXCPIYOY-25MAR-T2.3', 'KXCPIYOY-25MAR-T2.4', 'KXCPIYOY-25MAR-T2.5', 
+            'KXCPIYOY-25MAR-T2.6', 'KXCPIYOY-25MAR-T2.7', 'KXCPIYOY-25MAR-T2.8', 
+            'KXCPIYOY-25MAR-T2.9', 'KXCPIYOY-25MAR-T3.0', 'KXCPIYOY-25MAR-T3.1',
+            
+            # April 2025 CPI
+            'KXCPIYOY-25APR-T2.2', 'KXCPIYOY-25APR-T2.3', 'KXCPIYOY-25APR-T2.4', 
+            'KXCPIYOY-25APR-T2.5', 'KXCPIYOY-25APR-T2.6', 'KXCPIYOY-25APR-T2.7', 
+            'KXCPIYOY-25APR-T2.8', 'KXCPIYOY-25APR-T2.9', 'KXCPIYOY-25APR-T3.0',
+            'KXCPIYOY-25APR-T3.1',
+            
+            # May 2025 CPI
+            'KXCPIYOY-25MAY-T2.1', 'KXCPIYOY-25MAY-T2.2', 'KXCPIYOY-25MAY-T2.3',
+            'KXCPIYOY-25MAY-T2.4', 'KXCPIYOY-25MAY-T2.5', 'KXCPIYOY-25MAY-T2.6',
+            'KXCPIYOY-25MAY-T2.7', 'KXCPIYOY-25MAY-T2.8', 'KXCPIYOY-25MAY-T2.9',
+            'KXCPIYOY-25MAY-T3.0', 'KXCPIYOY-25MAY-T3.1',
+        ]
+        
+    elif (ticker_desc == 'headline_cpi_end_of_year'):
+        
+        tickers = [
+            
+            # Annual CPI 2025
+            'KXACPI-2025-0.6', 'KXACPI-2025-0.8', 'KXACPI-2025-1.3',
+            'KXACPI-2025-1.8', 'KXACPI-2025-2.3', 'KXACPI-2025-2.8', 
+            'KXACPI-2025-3.3', 'KXACPI-2025-3.8', 'KXACPI-2025-4.3', 
+            'KXACPI-2025-4.8', 'KXACPI-2025-5.3', 'KXACPI-2025-5.75', 
+            'KXACPI-2025-6.0',
+            
+            # Annual CPI 2024
+            'ACPI-24-C1.0', 'ACPI-24-B1.5', 'ACPI-24-B2.5', 
+            'ACPI-24-B3.5', 'ACPI-24-B4.5', 'ACPI-24-B5.5', 
+            'ACPI-24-B6.5', 'ACPI-24-C7.0'
+            
+            # Annual CPI 2023
+            'ACPI-23-C1.0', 'ACPI-23-B1.5', 'ACPI-23-B2.5', 
+            'ACPI-23-B3.5', 'ACPI-23-B4.5', 'ACPI-23-B5.5', 
+            'ACPI-23-B6.5', 'ACPI-23-C7.5', 'ACPI-23-C8.5',
+            'ACPI-23-C9.5',  'ACPI-23-C10.0'
+            
+            # Annual CPI 2022
+            'ACPI-22-C1.0', 'ACPI-22-B1.5', 'ACPI-22-B2.5', 
+            'ACPI-22-B3.5', 'ACPI-22-B4.5', 'ACPI-22-B5.5', 
+            'ACPI-22-B6.5', 'ACPI-22-C7.5', 'ACPI-22-C8.5',
+            'ACPI-22-C8.9'
+            
+            ]
+        
+    elif (ticker_desc == 'payrolls_releases'):
+        
+        tickers = [
+            
+            # March 2023 Payrolls
+            'PROLLS-23MAR-T0', 'PROLLS-23MAR-T100000', 'PROLLS-23MAR-T200000',
+            'PROLLS-23MAR-T300000', 'PROLLS-23MAR-T400000', 'PROLLS-23MAR-T500000',
+            
+            # April 2023 Payrolls
+            'PROLLS-23APR-T0', 'PROLLS-23APR-T100000', 'PROLLS-23APR-T200000', 
+            'PROLLS-23APR-T300000', 'PROLLS-23APR-T400000', 'PROLLS-23APR-T500000',
+            
+            # May 2023 Payrolls
+            'PROLLS-23MAY-T0', 'PROLLS-23MAY-T100000', 'PROLLS-23MAY-T200000', 
+            'PROLLS-23MAY-T300000', 'PROLLS-23MAY-T400000', 'PROLLS-23MAY-T500000',
+            
+            # June 2023 Payrolls
+            'PROLLS-23JUN-T0', 'PROLLS-23JUN-T100000', 'PROLLS-23JUN-T200000', 
+            'PROLLS-23JUN-T300000', 'PROLLS-23JUN-T400000', 'PROLLS-23JUN-T500000',
+            
+            # July 2023 Payrolls
+            'PROLLS-23JUL-T0', 'PROLLS-23JUL-T100000', 'PROLLS-23JUL-T200000',
+            'PROLLS-23JUL-T300000', 'PROLLS-23JUL-T400000', 'PROLLS-23JUL-T500000',
+            
+            # August 2023 Payrolls
+            'PROLLS-23AUG-T0', 'PROLLS-23AUG-T100000', 'PROLLS-23AUG-T200000',
+            'PROLLS-23AUG-T300000', 'PROLLS-23AUG-T400000', 'PROLLS-23AUG-T500000',
+            
+            # September 2023 Payrolls
+            'PROLLS-23SEP-T0', 'PROLLS-23SEP-T100000', 'PROLLS-23SEP-T200000', 
+            'PROLLS-23SEP-T300000', 'PROLLS-23SEP-T400000', 'PROLLS-23SEP-T500000',
+            
+            # October 2023 Payrolls
+            'PROLLS-23OCT-T0', 'PROLLS-23OCT-T100000', 'PROLLS-23OCT-T200000', 
+            'PROLLS-23OCT-T300000', 'PROLLS-23OCT-T400000', 'PROLLS-23OCT-T500000',
+            
+            # November 2023 Payrolls
+            'PROLLS-23NOV-T0', 'PROLLS-23NOV-T100000', 'PROLLS-23NOV-T150000', 
+            'PROLLS-23NOV-T200000', 'PROLLS-23NOV-T300000', 'PROLLS-23NOV-T400000',
+            'PROLLS-23NOV-T500000',
+            
+            # December 2023 Payrolls
+            'PROLLS-23DEC-T-100000','PROLLS-23DEC-T0', 'PROLLS-23DEC-T100000',
+            'PROLLS-23DEC-T199000', 'PROLLS-23DEC-T200000', 'PROLLS-23DEC-T300000', 
+            'PROLLS-23DEC-T400000',
+            
+            # January 2024 Payrolls
+            'PROLLS-24JAN-T-100001','PROLLS-24JAN-T-1', 'PROLLS-24JAN-T99999',
+            'PROLLS-24JAN-T149999', 'PROLLS-24JAN-T199999', 'PROLLS-24JAN-T215999',
+            'PROLLS-24JAN-T299999',
+            
+            # February 2024 Payrolls
+            'PAYROLLS-24FEB-T-100001','PAYROLLS-24FEB-T-1', 'PAYROLLS-24FEB-T99999',
+            'PAYROLLS-24FEB-T149999', 'PAYROLLS-24FEB-T199999', 'PAYROLLS-24FEB-T299999',
+            'PAYROLLS-24FEB-T352999', 'PAYROLLS-24FEB-T399999',
+            
+            # March 2024 Payrolls
+            'PAYROLLS-24MAR-T-100000','PAYROLLS-24MAR-T0', 'PAYROLLS-24MAR-100000', 
+            'PAYROLLS-24MAR-T150000', 'PAYROLLS-24MAR-T175000', 'PAYROLLS-24MAR-T200000',
+            'PAYROLLS-24MAR-T225000', 'PAYROLLS-24MAR-T250000', 'PAYROLLS-24MAR-T275000',
+            'PAYROLLS-24MAR-T300000',
+            
+            # April 2024 Payrolls
+            'PAYROLLS-24APR-T-100000','PAYROLLS-24APR-T0', 'PAYROLLS-24APR-100000',
+            'PAYROLLS-24APR-T150000', 'PAYROLLS-24APR-T200000', 'PAYROLLS-24APR-T225000',
+            'PAYROLLS-24APR-T250000', 'PAYROLLS-24APR-T275000', 'PAYROLLS-24APR-T300000',
+            'PAYROLLS-24APR-T303000',
+            
+            # May 2024 Payrolls
+            'PAYROLLS-24MAY-T-100000','PAYROLLS-24MAY-T0', 'PAYROLLS-24MAY-100000', 
+            'PAYROLLS-24MAY-T150000', 'PAYROLLS-24MAY-T175000', 'PAYROLLS-24MAY-T200000',  
+            'PAYROLLS-24MAY-T250000',  'PAYROLLS-24MAY-T300000',
+            
+            # June 2024 Payrolls
+            'PAYROLLS-24JUN-T-100000','PAYROLLS-24JUN-T0', 'PAYROLLS-24JUN-100000', 
+            'PAYROLLS-24JUN-T150000', 'PAYROLLS-24JUN-T200000',  'PAYROLLS-24JUN-T250000', 
+            'PAYROLLS-24JUN-T272000', 'PAYROLLS-24JUN-T300000',
+            
+            # July 2024 Payrolls
+            'PAYROLLS-24JUL-T-100000','PAYROLLS-24JUL-T0', 'PAYROLLS-24JUL-100000', 
+            'PAYROLLS-24JUL-T150000', 'PAYROLLS-24JUL-T200000',  'PAYROLLS-24JUL-T206000',
+            'PAYROLLS-24JUL-T250000', 'PAYROLLS-24JUL-T300000',
+            
+            # August 2024 Payrolls
+            'PAYROLLS-24AUG-T-100000','PAYROLLS-24AUG-T0', 'PAYROLLS-24AUG-100000', 
+            'PAYROLLS-24AUG-T150000', 'PAYROLLS-24AUG-T200000',  'PAYROLLS-24AUG-T250000',
+            'PAYROLLS-24AUG-T300000',
+            
+            # September 2024 Payrolls
+            'PAYROLLS-24SEP-T-100000','PAYROLLS-24SEP-T0', 'PAYROLLS-24SEP-50000',
+            'PAYROLLS-24SEP-100000', 'PAYROLLS-24SEP-T142000', 'PAYROLLS-24SEP-T150000',
+            'PAYROLLS-24SEP-T200000',  'PAYROLLS-24SEP-T250000',
+            
+            # October 2024 Payrolls
+            'PAYROLLS-24OCT-T-50000', 'PAYROLLS-24OCT-T0', 'PAYROLLS-24OCT-50000', 
+            'PAYROLLS-24OCT-100000', 'PAYROLLS-24OCT-T150000', 'PAYROLLS-24OCT-T200000',
+            'PAYROLLS-24OCT-T250000',  'PAYROLLS-24OCT-T254000',
+            
+            # November 2024 Payrolls
+            'KXPAYROLLS-24NOV-T-100000', 'KXPAYROLLS-24NOV-T0', 'KXPAYROLLS-24NOV-100000',
+            'KXPAYROLLS-24NOV-150000', 'KXPAYROLLS-24NOV-T200000', 'KXPAYROLLS-24NOV-T250000', 
+            'KXPAYROLLS-24NOV-T300000',  'KXPAYROLLS-24NOV-T400000', 'KXPAYROLLS-24NOV-T500000', 
+            
+            # December 2024 Payrolls
+            'KXPAYROLLS-24DEC-T-100000', 'KXPAYROLLS-24DEC-T0', 'KXPAYROLLS-24DEC-100000',
+            'KXPAYROLLS-24DEC-150000', 'KXPAYROLLS-24DEC-T200000', 'KXPAYROLLS-24DEC-T227000',
+            'KXPAYROLLS-24DEC-T250000',  'KXPAYROLLS-24DEC-T300000',
+            
+            # January 2025 Payrolls
+            'KXPAYROLLS-25JAN-T-100000', 'KXPAYROLLS-25JAN-T0', 'KXPAYROLLS-25JAN-100000',
+            'KXPAYROLLS-25JAN-150000', 'KXPAYROLLS-25JAN-T200000', 'KXPAYROLLS-25JAN-T250000',
+            'KXPAYROLLS-25JAN-T256000',  'KXPAYROLLS-25JAN-T300000',
+            
+            # February 2025 Payrolls
+            'KXPAYROLLS-25FEB-T-100000', 'KXPAYROLLS-25FEB-T0', 'KXPAYROLLS-25FEB-100000',
+            'KXPAYROLLS-25FEB-150000', 'KXPAYROLLS-25FEB-T200000', 'KXPAYROLLS-25FEB-T250000', 
+            'KXPAYROLLS-25FEB-T300000',
+            
+            # March 2025 Payrolls
+            'KXPAYROLLS-25MAR-T-100000', 'KXPAYROLLS-25MAR-T0', 'KXPAYROLLS-25MAR-100000', 
+            'KXPAYROLLS-25MAR-150000', 'KXPAYROLLS-25MAR-T200000', 'KXPAYROLLS-25MAR-T250000',
+            'KXPAYROLLS-25MAR-T256000',  'KXPAYROLLS-25MAR-T300000',
+            
+            # April 2025 Payrolls
+            'KXPAYROLLS-25APR-T-100000', 'KXPAYROLLS-25APR-T0', 'KXPAYROLLS-25APR-100000',
+            'KXPAYROLLS-25APR-150000', 'KXPAYROLLS-25APR-T200000', 'KXPAYROLLS-25APR-T250000',
+            'KXPAYROLLS-25APR-T256000',  'KXPAYROLLS-25APR-T300000',
+            
+            # May 2025 Payrolls
+            'KXPAYROLLS-25MAY-T-100000', 'KXPAYROLLS-25MAY-T0', 'KXPAYROLLS-25MAY-100000', 
+            'KXPAYROLLS-25MAY-150000', 'KXPAYROLLS-25MAY-T200000', 'KXPAYROLLS-25MAY-T250000', 
+            'KXPAYROLLS-25MAY-T256000',  'KXPAYROLLS-25MAY-T300000',
+            
+        ]
+        
+    elif (ticker_desc == 'recession_annual'):
+        
+        tickers = [
+                'RECSSNBER-21', 'RECSSNBER-22', 'RECSSNBER-23', 
+                'RECSSNBER-24', 'RECSSNBER-25' 
+            ]
+        
+    return(tickers)
