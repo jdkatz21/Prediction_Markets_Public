@@ -13,7 +13,7 @@ import {
 } from 'recharts';
 import CustomTooltip from './CustomTooltip';
 
-const API = 'http://localhost:8000';
+const API = import.meta.env.VITE_API_BASE_URL;
 
 // Small utility: null-safe percent format
 const fmtPct = (v) => (v == null ? '–' : `${v.toFixed(1)}%`);
