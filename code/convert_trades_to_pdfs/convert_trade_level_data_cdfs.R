@@ -50,6 +50,7 @@
 library(tidyverse)
 library(lubridate)
 library(matrixStats)
+library(collapse)
 
 setwd('/Users/jaredkatz/Documents/Research/PredictionMarketsPublic')
 
@@ -88,12 +89,12 @@ read_data <- function(input_file) {
 #' @return A data frame with daily last prices and total volume per contract and strike.
 convert_to_daily <- function(df) {
   
-  df <- df %>% group_by(date, contract_preamble, strike) %>% # for each market on a specfic day
+  df <- df %>% group_by(date, contract_preamble, strike) %>% arrange (desc(date)) %>% # for each market on a specfic day
     
     reframe(date=date,
             contract_preamble = contract_preamble,
             strike = strike,
-            yes_price = last(yes_price), # get the last price as the day's value
+            yes_price = last(yes_price, count), # get the last price as the day's value
             daily_volume = sum(count)) %>% # get the volume traded as sum of contracts
     
     distinct() %>%
@@ -196,9 +197,10 @@ clean_data <- function(df) {
 #'
 #' @param df A data frame with columns: contract_preamble, date, expiry_date, strike, adjusted_yes_price.
 #' @param strike_int A value representing the difference between strikes (how low to set the low bin)
+#' @param days_before_horizon A value for removing data too far away from the horizon from the dataset
 #' @return A data frame with an added `probability` column representing
 #'         approximate probability mass for each strike bin.
-convert_to_probabilities <- function(df, strike_int) {
+convert_to_probabilities <- function(df, strike_int, days_before_horizon) {
   
   # Add low bins representing if even the minimum strike listed was not cleared
   # In order to not skew moments towards 0, the low bin is marked as the
@@ -305,6 +307,8 @@ convert_to_probabilities <- function(df, strike_int) {
     mutate(sum = sum(probability),
            probability = probability * 100 / sum) %>% select(-sum)
   
+  df <- df %>% filter(date  >= expiry_date - days(days_before_horizon))
+  
   return(df)
   
   
@@ -353,14 +357,16 @@ get_moments <- function(df) {
 #' @param input_file Path to the input CSV file with raw trade-level data.
 #' @param output_distributions Path to output CSV file for the processed probability distributions.
 #' @param output_moments Path to output CSV file for the computed moments
+#' @param days_before_horizon A value for removing data too far away from the horizon from the dataset
 #' @return No return value. Writes processed data to specified output files.
-extract_distributions <- function(input_file, output_distributions, output_moments, strike_int) {
+extract_distributions <- function(input_file, output_distributions, output_moments, strike_int,
+                                  days_before_horizon) {
   
   df <- read_data(input_file = input_file)
   df <- convert_to_daily(df)
   df <- fill_dataless_days(df)
   df <- clean_data(df)
-  df <- convert_to_probabilities(df, strike_int = strike_int)
+  df <- convert_to_probabilities(df, strike_int = strike_int, days_before_horizon)
   moments_df <- get_moments(df)
 
   write_csv(moments_df, output_moments)
@@ -371,12 +377,19 @@ extract_distributions <- function(input_file, output_distributions, output_momen
 extract_distributions(input_file = 'data/trade_level_data/trade_level_data_fed_levels.csv',
                       output_distributions = 'data/daily_distribution_data/daily_distributions_fed_levels.csv',
                       output_moments = 'data/daily_moments_data/daily_moments_fed_levels.csv',
-                      strike_int = 0.25)
+                      strike_int = 0.25,
+                      days_before_horizon = 180)
 
 
 extract_distributions(input_file = 'data/trade_level_data/trade_level_data_headline_cpi_releases.csv',
                       output_distributions = 'data/daily_distribution_data/daily_distributions_headline_cpi_releases.csv',
                       output_moments = 'data/daily_moments_data/daily_moments_headline_cpi_releases.csv',
-                      strike_int = 0.1)
+                      strike_int = 0.1,
+                      days_before_horizon = 30)
 
+extract_distributions(input_file = 'data/trade_level_data/trade_level_data_unemployment.csv',
+                      output_distributions = 'data/daily_distribution_data/daily_distributions_unemployment_releases.csv',
+                      output_moments = 'data/daily_moments_data/daily_moments_unemployment_releases.csv',
+                      strike_int = 0.1,
+                      days_before_horizon = 30)
 

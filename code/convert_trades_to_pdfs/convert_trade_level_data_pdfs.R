@@ -260,8 +260,13 @@ extract_distributions <- function(input_file, output_distributions, output_momen
   write_csv(df, output_distributions)
 }
 
-
+# CPI end of year
 extract_distributions(input_file = 'data/trade_level_data/trade_level_data_headline_cpi_end_of_year.csv',
-output_distributions = 'data/daily_distribution_data/daily_distributions_headline_cpi_end_of_year.csv',
-output_moments = 'data/daily_moments_data/daily_moments_headline_cpi_end_of_year.csv')
+              output_distributions = 'data/daily_distribution_data/daily_distributions_headline_cpi_end_of_year.csv',
+              output_moments = 'data/daily_moments_data/daily_moments_headline_cpi_end_of_year.csv')
+
+# GDP end of year
+extract_distributions(input_file = 'data/trade_level_data/trade_level_data_gdp_end_of_year.csv',
+                      output_distributions = 'data/daily_distribution_data/daily_distributions_gdp_end_of_year.csv',
+                      output_moments = 'data/daily_moments_data/daily_moments_gdp_end_of_year.csv')
 

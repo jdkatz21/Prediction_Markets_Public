@@ -207,8 +207,14 @@ scrape_kalshi('data/trade_level_data/trade_level_data_headline_cpi_releases.csv'
 cpi_end_of_year_tickers = tickers.get_tickers('headline_cpi_end_of_year')
 scrape_kalshi('data/trade_level_data/trade_level_data_headline_cpi_end_of_year.csv', cpi_end_of_year_tickers)
 
+gdp_end_of_year_tickers = tickers.get_tickers('gdp_end_of_year')
+scrape_kalshi('data/trade_level_data/trade_level_data_gdp_end_of_year.csv', gdp_end_of_year_tickers)
+
 payrolls_tickers = tickers.get_tickers('payrolls_releases')
 scrape_kalshi('data/trade_level_data/trade_level_data_payrolls.csv', payrolls_tickers)
+
+unemployment_tickers = tickers.get_tickers('unemployment_releases') # currently only have since Jan 2024, need to backfill
+scrape_kalshi('data/trade_level_data/trade_level_data_unemployment.csv', unemployment_tickers)
 
 recession_annual_tickers = tickers.get_tickers('recession_annual')
 scrape_kalshi('data/trade_level_data/trade_level_data_recession_annual.csv', recession_annual_tickers)

@@ -455,6 +455,224 @@ def get_tickers(ticker_desc):
             'KXCPIYOY-25MAY-T3.0', 'KXCPIYOY-25MAY-T3.1',
         ]
         
+    
+    elif (ticker_desc == 'core_cpi_releases'):
+        
+            
+        tickers = [
+            
+            
+            # December 2022 CPICORE
+            'CPICOREYOY-22DEC-T5.0', 'CPICOREYOY-22DEC-T5.1', 'CPICOREYOY-22DEC-T5.2',
+            'CPICOREYOY-22DEC-T5.3', 'CPICOREYOY-22DEC-T5.4', 'CPICOREYOY-22DEC-T5.5',
+            'CPICOREYOY-22DEC-T5.6', 'CPICOREYOY-22DEC-T5.7', 'CPICOREYOY-22DEC-T5.8', 
+            'CPICOREYOY-22DEC-T5.9', 'CPICOREYOY-22DEC-T6.0', 'CPICOREYOY-22DEC-T6.1',
+            'CPICOREYOY-22DEC-T6.2', 'CPICOREYOY-22DEC-T6.3', 'CPICOREYOY-22DEC-T6.4',
+            
+            # January 2023 CPICORE
+            'CPICOREYOY-23JAN-T4.6', 'CPICOREYOY-23JAN-T4.7', 'CPICOREYOY-23JAN-T4.8',
+            'CPICOREYOY-23JAN-T4.9', 'CPICOREYOY-23JAN-T5.0', 'CPICOREYOY-23JAN-T5.1', 
+            'CPICOREYOY-23JAN-T5.2', 'CPICOREYOY-23JAN-T5.3', 'CPICOREYOY-23JAN-T5.4',
+            'CPICOREYOY-23JAN-T5.5', 'CPICOREYOY-23JAN-T5.6', 'CPICOREYOY-23JAN-T5.7', 
+            'CPICOREYOY-23JAN-T5.8', 'CPICOREYOY-23JAN-T5.9', 'CPICOREYOY-23JAN-T6.0',
+            
+            # February 2023 CPICORE
+            'CPICOREYOY-23FEB-T4.0', 'CPICOREYOY-23FEB-T4.1', 'CPICOREYOY-23FEB-T4.2', 
+            'CPICOREYOY-23FEB-T4.3', 'CPICOREYOY-23FEB-T4.4', 'CPICOREYOY-23FEB-T4.5', 
+            'CPICOREYOY-23FEB-T4.6', 'CPICOREYOY-23FEB-T4.7', 'CPICOREYOY-23FEB-T4.8', 
+            'CPICOREYOY-23FEB-T4.9', 'CPICOREYOY-23FEB-T5.0', 'CPICOREYOY-23FEB-T5.1',
+            'CPICOREYOY-23FEB-T5.2', 'CPICOREYOY-23FEB-T5.3', 'CPICOREYOY-23FEB-T5.4', 
+            'CPICOREYOY-23FEB-T5.5', 'CPICOREYOY-23FEB-T5.6', 'CPICOREYOY-23FEB-T5.7', 
+            'CPICOREYOY-23FEB-T5.8',
+            
+            # March 2023 CPICORE
+            'CPICOREYOY-23MAR-T3.8', 'CPICOREYOY-23MAR-T3.9', 'CPICOREYOY-23MAR-T4.0', 
+            'CPICOREYOY-23MAR-T4.1', 'CPICOREYOY-23MAR-T4.2', 'CPICOREYOY-23MAR-T4.3', 
+            'CPICOREYOY-23MAR-T4.4', 'CPICOREYOY-23MAR-T4.5', 'CPICOREYOY-23MAR-T4.6', 
+            'CPICOREYOY-23MAR-T4.7', 'CPICOREYOY-23MAR-T4.8', 'CPICOREYOY-23MAR-T4.9', 
+            'CPICOREYOY-23MAR-T5.0', 'CPICOREYOY-23MAR-T5.1', 'CPICOREYOY-23MAR-T5.2',
+            'CPICOREYOY-23MAR-T5.3', 'CPICOREYOY-23MAR-T5.4', 'CPICOREYOY-23MAR-T5.5', 
+            'CPICOREYOY-23MAR-T5.6', 'CPICOREYOY-23MAR-T5.7', 'CPICOREYOY-23MAR-T5.8', 
+            'CPICOREYOY-23MAR-T5.9',
+            
+            # April 2023 CPICORE
+            'CPICOREYOY-23APR-T3.3', 'CPICOREYOY-23APR-T3.4', 'CPICOREYOY-23APR-T3.5', 
+            'CPICOREYOY-23APR-T3.6', 'CPICOREYOY-23APR-T3.7', 'CPICOREYOY-23APR-T3.8', 
+            'CPICOREYOY-23APR-T3.9', 'CPICOREYOY-23APR-T4.0', 'CPICOREYOY-23APR-T4.1', 
+            'CPICOREYOY-23APR-T4.2', 'CPICOREYOY-23APR-T4.3', 'CPICOREYOY-23APR-T4.4', 
+            'CPICOREYOY-23APR-T4.5', 'CPICOREYOY-23APR-T4.6', 'CPICOREYOY-23APR-T4.7',
+            'CPICOREYOY-23APR-T4.8',
+            'CPICOREYOY-23APR-T4.9', 'CPICOREYOY-23APR-T5.0', 'CPICOREYOY-23APR-T5.1',
+            'CPICOREYOY-23APR-T5.2', 'CPICOREYOY-23APR-T5.3', 'CPICOREYOY-23APR-T5.4',
+            'CPICOREYOY-23APR-T5.5', 'CPICOREYOY-23APR-T5.6', 'CPICOREYOY-23APR-T5.7',
+            'CPICOREYOY-23APR-T5.8'
+            
+            
+            # May 2023 CPICORE
+            'CPICOREYOY-23MAY-T3.3', 'CPICOREYOY-23MAY-T3.4', 'CPICOREYOY-23MAY-T3.5', 
+            'CPICOREYOY-23MAY-T3.6', 'CPICOREYOY-23MAY-T3.7', 'CPICOREYOY-23MAY-T3.8', 
+            'CPICOREYOY-23MAY-T3.9', 'CPICOREYOY-23MAY-T4.0', 'CPICOREYOY-23MAY-T4.1', 
+            'CPICOREYOY-23MAY-T4.2', 'CPICOREYOY-23MAY-T4.3', 'CPICOREYOY-23MAY-T4.4', 
+            'CPICOREYOY-23MAY-T4.5', 'CPICOREYOY-23MAY-T4.6', 'CPICOREYOY-23MAY-T4.7',
+            'CPICOREYOY-23MAY-T4.8',
+            'CPICOREYOY-23MAY-T4.9', 'CPICOREYOY-23MAY-T5.0', 'CPICOREYOY-23MAY-T5.1',
+            'CPICOREYOY-23MAY-T5.2', 'CPICOREYOY-23MAY-T5.3', 'CPICOREYOY-23MAY-T5.4',
+            'CPICOREYOY-23MAY-T5.5', 'CPICOREYOY-23MAY-T5.6', 'CPICOREYOY-23MAY-T5.7',
+            'CPICOREYOY-23MAY-T5.8'
+            
+            # June 2023 CPICORE
+            'CPICOREYOY-23JUN-T2.7', 'CPICOREYOY-23JUN-T2.8', 'CPICOREYOY-23JUN-T2.9', 
+            'CPICOREYOY-23JUN-T3.0', 'CPICOREYOY-23JUN-T3.1', 'CPICOREYOY-23JUN-T3.2', 
+            'CPICOREYOY-23JUN-T3.3', 'CPICOREYOY-23JUN-T3.4', 'CPICOREYOY-23JUN-T3.5', 
+            'CPICOREYOY-23JUN-T3.6', 'CPICOREYOY-23JUN-T3.7', 'CPICOREYOY-23JUN-T3.8', 
+            'CPICOREYOY-23JUN-T3.9', 'CPICOREYOY-23JUN-T4.0', 'CPICOREYOY-23JUN-T4.1',
+            'CPICOREYOY-23JUN-T4.2', 'CPICOREYOY-23JUN-T4.3', 'CPICOREYOY-23JUN-T4.4',
+            'CPICOREYOY-23JUN-T4.5', 'CPICOREYOY-23JUN-T4.6', 'CPICOREYOY-23JUN-T4.7',
+            
+            # July 2023 CPICORE
+            'CPICOREYOY-23JUL-T2.0', 'CPICOREYOY-23JUL-T2.1', 'CPICOREYOY-23JUL-T2.2', 
+            'CPICOREYOY-23JUL-T2.3', 'CPICOREYOY-23JUL-T2.4', 'CPICOREYOY-23JUL-T2.5', 
+            'CPICOREYOY-23JUL-T2.6', 'CPICOREYOY-23JUL-T2.7', 'CPICOREYOY-23JUL-T2.8', 
+            'CPICOREYOY-23JUL-T2.9', 'CPICOREYOY-23JUL-T3.0', 'CPICOREYOY-23JUL-T3.1', 
+            'CPICOREYOY-23JUL-T3.2', 'CPICOREYOY-23JUL-T3.3', 'CPICOREYOY-23JUL-T3.4',
+            'CPICOREYOY-23JUL-T3.5', 'CPICOREYOY-23JUL-T3.6', 'CPICOREYOY-23JUL-T3.7', 
+            'CPICOREYOY-23JUL-T3.8', 'CPICOREYOY-23JUL-T3.9', 'CPICOREYOY-23JUL-T4.0', 
+            'CPICOREYOY-23JUL-T4.1', 
+            
+            # August 2023 CPICORE
+            'CPICOREYOY-23AUG-T2.8', 'CPICOREYOY-23AUG-T2.9', 'CPICOREYOY-23AUG-T3.0', 
+            'CPICOREYOY-23AUG-T3.1', 'CPICOREYOY-23AUG-T3.2', 'CPICOREYOY-23AUG-T3.3', 
+            'CPICOREYOY-23AUG-T3.4', 'CPICOREYOY-23AUG-T3.5', 'CPICOREYOY-23AUG-T3.6', 
+            'CPICOREYOY-23AUG-T3.7', 'CPICOREYOY-23AUG-T3.8', 'CPICOREYOY-23AUG-T3.9', 
+            'CPICOREYOY-23AUG-T4.0', 'CPICOREYOY-23AUG-T4.1', 'CPICOREYOY-23AUG-T4.2',
+            
+            # September 2023 CPICORE
+            'CPICOREYOY-23SEP-T2.6', 'CPICOREYOY-23SEP-T2.7', 'CPICOREYOY-23SEP-T2.8', 
+            'CPICOREYOY-23SEP-T2.9', 'CPICOREYOY-23SEP-T3.0', 'CPICOREYOY-23SEP-T3.1', 
+            'CPICOREYOY-23SEP-T3.2', 'CPICOREYOY-23SEP-T3.3', 'CPICOREYOY-23SEP-T3.4', 
+            'CPICOREYOY-23SEP-T3.5', 'CPICOREYOY-23SEP-T3.6', 'CPICOREYOY-23SEP-T3.7', 
+            'CPICOREYOY-23SEP-T3.8', 'CPICOREYOY-23SEP-T3.9', 'CPICOREYOY-23SEP-T4.0', 
+            
+            # October 2023 CPICORE
+            'CPICOREYOY-23OCT-T2.6', 'CPICOREYOY-23OCT-T2.7', 'CPICOREYOY-23OCT-T2.8', 
+            'CPICOREYOY-23OCT-T2.9', 'CPICOREYOY-23OCT-T3.0', 'CPICOREYOY-23OCT-T3.1', 
+            'CPICOREYOY-23OCT-T3.2', 'CPICOREYOY-23OCT-T3.3', 'CPICOREYOY-23OCT-T3.4', 
+            'CPICOREYOY-23OCT-T3.5', 'CPICOREYOY-23OCT-T3.6', 'CPICOREYOY-23OCT-T3.7', 
+            'CPICOREYOY-23OCT-T3.8', 'CPICOREYOY-23OCT-T3.9', 'CPICOREYOY-23OCT-T4.0', 
+            
+            # November 2023 CPICORE
+            'CPICOREYOY-23NOV-T2.6', 'CPICOREYOY-23NOV-T2.7', 'CPICOREYOY-23NOV-T2.8', 
+            'CPICOREYOY-23NOV-T2.9', 'CPICOREYOY-23NOV-T3.0', 'CPICOREYOY-23NOV-T3.1', 
+            'CPICOREYOY-23NOV-T3.2', 'CPICOREYOY-23NOV-T3.3', 'CPICOREYOY-23NOV-T3.4',
+            'CPICOREYOY-23NOV-T3.5', 'CPICOREYOY-23NOV-T3.6', 'CPICOREYOY-23NOV-T3.7',
+            'CPICOREYOY-23NOV-T3.8', 'CPICOREYOY-23NOV-T3.9', 'CPICOREYOY-23NOV-T4.0',
+            
+            # December 2023 CPICORE
+            'CPICOREYOY-23DEC-T2.8', 'CPICOREYOY-23DEC-T2.9', 'CPICOREYOY-23DEC-T3.0',
+            'CPICOREYOY-23DEC-T3.1', 'CPICOREYOY-23DEC-T3.2', 'CPICOREYOY-23DEC-T3.3', 
+            'CPICOREYOY-23DEC-T3.4',
+            
+            # January 2024 CPICORE
+            'CPICOREYOY-24JAN-T2.8', 'CPICOREYOY-24JAN-T2.9', 'CPICOREYOY-24JAN-T3.0', 
+            'CPICOREYOY-24JAN-T3.1', 'CPICOREYOY-24JAN-T3.2', 'CPICOREYOY-24JAN-T3.3', 
+            'CPICOREYOY-24JAN-T3.4', 'CPICOREYOY-24JAN-T3.5', 'CPICOREYOY-24JAN-T3.6',
+            'CPICOREYOY-24JAN-T3.7',
+            
+            # February 2024 CPICORE
+            'CPICOREYOY-24FEB-T2.5', 'CPICOREYOY-24FEB-T2.6', 'CPICOREYOY-24FEB-T2.7', 
+            'CPICOREYOY-24FEB-T2.8', 'CPICOREYOY-24FEB-T2.9', 'CPICOREYOY-24FEB-T3.0',
+            'CPICOREYOY-24FEB-T3.1', 'CPICOREYOY-24FEB-T3.2', 'CPICOREYOY-24FEB-T3.3',
+            'CPICOREYOY-24FEB-T3.4', 'CPICOREYOY-24FEB-T3.5', 'CPICOREYOY-24FEB-T3.6',
+            'CPICOREYOY-24FEB-T3.7',
+            
+            # March 2024 CPICORE
+            'CPICOREYOY-24MAR-T2.8', 'CPICOREYOY-24MAR-T2.9', 'CPICOREYOY-24MAR-T3.0', 
+            'CPICOREYOY-24MAR-T3.1', 'CPICOREYOY-24MAR-T3.2', 'CPICOREYOY-24MAR-T3.3', 
+            'CPICOREYOY-24MAR-T3.4', 'CPICOREYOY-24MAR-T3.5',
+            
+            # April 2024 CPICORE
+            'CPICOREYOY-24APR-T2.8', 'CPICOREYOY-24APR-T2.9', 'CPICOREYOY-24APR-T3.0',
+            'CPICOREYOY-24APR-T3.1', 'CPICOREYOY-24APR-T3.2', 'CPICOREYOY-24APR-T3.3',
+            'CPICOREYOY-24APR-T3.4', 'CPICOREYOY-24APR-T3.5', 'CPICOREYOY-24APR-T3.6',
+            'CPICOREYOY-24APR-T3.7', 'CPICOREYOY-24APR-T3.8', 
+            
+            # May 2024 CPICORE
+            'CPICOREYOY-24MAY-T3.0', 'CPICOREYOY-24MAY-T3.1', 'CPICOREYOY-24MAY-T3.2', 
+            'CPICOREYOY-24MAY-T3.3', 'CPICOREYOY-24MAY-T3.4', 'CPICOREYOY-24MAY-T3.5', 
+            'CPICOREYOY-24MAY-T3.6', 'CPICOREYOY-24MAY-T3.7', 'CPICOREYOY-24MAY-T3.8', 
+            'CPICOREYOY-24MAY-T3.9', 
+            
+            # June 2024 CPICORE
+            'CPICOREYOY-24JUN-T2.8', 'CPICOREYOY-24JUN-T2.9', 'CPICOREYOY-24JUN-T3.0',
+            'CPICOREYOY-24JUN-T3.1', 'CPICOREYOY-24JUN-T3.2', 'CPICOREYOY-24JUN-T3.3',
+            'CPICOREYOY-24JUN-T3.4', 'CPICOREYOY-24JUN-T3.5', 'CPICOREYOY-24JUN-T3.6',
+            'CPICOREYOY-24JUN-T3.7', 'CPICOREYOY-24JUN-T3.8', 
+            
+            # July 2024 CPICORE
+            'CPICOREYOY-24JUL-T2.7', 'CPICOREYOY-24JUL-T2.8', 'CPICOREYOY-24JUL-T2.9',
+            'CPICOREYOY-24JUL-T3.0', 'CPICOREYOY-24JUL-T3.1', 'CPICOREYOY-24JUL-T3.2', 
+            'CPICOREYOY-24JUL-T3.3', 'CPICOREYOY-24JUL-T3.4', 'CPICOREYOY-24JUL-T3.5', 
+            'CPICOREYOY-24JUL-T3.6', 'CPICOREYOY-24JUL-T3.7', 'CPICOREYOY-24JUL-T3.8',
+            
+            # August 2024 CPICORE
+            'CPICOREYOY-24AUG-T2.3', 'CPICOREYOY-24AUG-T2.4', 'CPICOREYOY-24AUG-T2.5',
+            'CPICOREYOY-24AUG-T2.6', 'CPICOREYOY-24AUG-T2.7', 'CPICOREYOY-24AUG-T2.8',
+            'CPICOREYOY-24AUG-T2.9', 'CPICOREYOY-24AUG-T3.0', 'CPICOREYOY-24AUG-T3.1', 
+            
+            # September 2024 CPICORE
+            'CPICOREYOY-24SEP-T2.0', 'CPICOREYOY-24SEP-T2.1', 'CPICOREYOY-24SEP-T2.2', 
+            'CPICOREYOY-24SEP-T2.3', 'CPICOREYOY-24SEP-T2.4', 'CPICOREYOY-24SEP-T2.5',
+            'CPICOREYOY-24SEP-T2.6', 'CPICOREYOY-24SEP-T2.7', 'CPICOREYOY-24SEP-T2.8',
+            'CPICOREYOY-24SEP-T2.9', 'CPICOREYOY-24SEP-T3.0', 'CPICOREYOY-24SEP-T3.1',
+            
+            # October 2024 CPICORE
+            'CPICOREYOY-24OCT-T2.3', 'CPICOREYOY-24OCT-T2.4', 'CPICOREYOY-24OCT-T2.5', 
+            'CPICOREYOY-24OCT-T2.6', 'CPICOREYOY-24OCT-T2.7', 'CPICOREYOY-24OCT-T2.8',
+            'CPICOREYOY-24OCT-T2.9', 'CPICOREYOY-24OCT-T3.0', 'CPICOREYOY-24OCT-T3.1', 
+            
+            # November 2024 CPICORE
+            'KXCPICOREYOY-24NOV-T2.1', 'KXCPICOREYOY-24NOV-T2.2', 'KXCPICOREYOY-24NOV-T2.3',
+            'KXCPICOREYOY-24NOV-T2.4', 'KXCPICOREYOY-24NOV-T2.5', 'KXCPICOREYOY-24NOV-T2.6',
+            'KXCPICOREYOY-24NOV-T2.7', 'KXCPICOREYOY-24NOV-T2.8', 'KXCPICOREYOY-24NOV-T2.9',
+            'KXCPICOREYOY-24NOV-T3.0',
+            
+            # December 2024 CPICORE
+            'KXCPICOREYOY-24DEC-T2.0', 'KXCPICOREYOY-24DEC-T2.1', 'KXCPICOREYOY-24DEC-T2.2',
+            'KXCPICOREYOY-24DEC-T2.3', 'KXCPICOREYOY-24DEC-T2.4', 'KXCPICOREYOY-24DEC-T2.5',
+            'KXCPICOREYOY-24DEC-T2.6', 'KXCPICOREYOY-24DEC-T2.7', 'KXCPICOREYOY-24DEC-T2.8',
+            'KXCPICOREYOY-24DEC-T2.9', 'KXCPICOREYOY-24DEC-T3.0',
+            
+            # January 2025 CPICORE
+            'KXCPICOREYOY-25JAN-T1.8', 'KXCPICOREYOY-25JAN-T1.9' 'KXCPICOREYOY-25JAN-T2.0',
+            'KXCPICOREYOY-25JAN-T2.1', 'KXCPICOREYOY-25JAN-T2.2', 'KXCPICOREYOY-25JAN-T2.3',
+            'KXCPICOREYOY-25JAN-T2.4', 'KXCPICOREYOY-25JAN-T2.5', 'KXCPICOREYOY-25JAN-T2.6',
+            'KXCPICOREYOY-25JAN-T2.7', 'KXCPICOREYOY-25JAN-T2.8', 'KXCPICOREYOY-25JAN-T2.9',
+            'KXCPICOREYOY-25JAN-T3.0', 'KXCPICOREYOY-25JAN-T3.1',
+            
+            # February 2025 CPICORE
+            'KXCPICOREYOY-25FEB-T2.4', 'KXCPICOREYOY-25FEB-T2.5', 'KXCPICOREYOY-25FEB-T2.6', 
+            'KXCPICOREYOY-25FEB-T2.7', 'KXCPICOREYOY-25FEB-T2.8', 'KXCPICOREYOY-25FEB-T2.9', 
+            'KXCPICOREYOY-25FEB-T3.0', 'KXCPICOREYOY-25FEB-T3.1',
+            
+            # March 2025 CPICORE
+            'KXCPICOREYOY-25MAR-T2.3', 'KXCPICOREYOY-25MAR-T2.4', 'KXCPICOREYOY-25MAR-T2.5', 
+            'KXCPICOREYOY-25MAR-T2.6', 'KXCPICOREYOY-25MAR-T2.7', 'KXCPICOREYOY-25MAR-T2.8', 
+            'KXCPICOREYOY-25MAR-T2.9', 'KXCPICOREYOY-25MAR-T3.0', 'KXCPICOREYOY-25MAR-T3.1',
+            
+            # April 2025 CPICORE
+            'KXCPICOREYOY-25APR-T2.2', 'KXCPICOREYOY-25APR-T2.3', 'KXCPICOREYOY-25APR-T2.4', 
+            'KXCPICOREYOY-25APR-T2.5', 'KXCPICOREYOY-25APR-T2.6', 'KXCPICOREYOY-25APR-T2.7', 
+            'KXCPICOREYOY-25APR-T2.8', 'KXCPICOREYOY-25APR-T2.9', 'KXCPICOREYOY-25APR-T3.0',
+            'KXCPICOREYOY-25APR-T3.1',
+            
+            # May 2025 CPICORE
+            'KXCPICOREYOY-25MAY-T2.1', 'KXCPICOREYOY-25MAY-T2.2', 'KXCPICOREYOY-25MAY-T2.3',
+            'KXCPICOREYOY-25MAY-T2.4', 'KXCPICOREYOY-25MAY-T2.5', 'KXCPICOREYOY-25MAY-T2.6',
+            'KXCPICOREYOY-25MAY-T2.7', 'KXCPICOREYOY-25MAY-T2.8', 'KXCPICOREYOY-25MAY-T2.9',
+            'KXCPICOREYOY-25MAY-T3.0', 'KXCPICOREYOY-25MAY-T3.1',
+        ]
+            
+    
     elif (ticker_desc == 'headline_cpi_end_of_year'):
         
         tickers = [
@@ -626,5 +844,125 @@ def get_tickers(ticker_desc):
                 'RECSSNBER-21', 'RECSSNBER-22', 'RECSSNBER-23', 
                 'RECSSNBER-24', 'RECSSNBER-25' 
             ]
+        
+        
+    elif(ticker_desc == 'gdp_end_of_year'):
+        
+        tickers = [
+                    'KXGDPYEAR-25-T0.1', 'KXGDPYEAR-25-B0.3', 'KXGDPYEAR-25-B0.8',
+                    'KXGDPYEAR-25-B1.3', 'KXGDPYEAR-25-B1.8',
+                    'KXGDPYEAR-25-B2.3', 'KXGDPYEAR-25-B2.8',
+                    'KXGDPYEAR-25-B3.3', 'KXGDPYEAR-25-B3.8',
+                    'KXGDPYEAR-25-B4.3', 'KXGDPYEAR-25-T5.0'
+            
+            ]
+        
+        
+    elif(ticker_desc == 'unemployment_releases'):
+        
+        tickers = [
+            
+                    # January 2024 Payrolls
+                    'U3-24JAN-T3.2', 'U3-24JAN-T3.3',  'U3-24JAN-T3.4', 'U3-24JAN-T3.5',
+                    'U3-24JAN-T3.6', 'U3-24JAN-T3.7',  'U3-24JAN-T3.8', 'U3-24JAN-T3.9',
+                    'U3-25JAN-T4.0',
+            
+                    # February 2024 Payrolls
+                    'U3-24FEB-T3.4', 'U3-24FEB-T3.5',
+                    'U3-24FEB-T3.6', 'U3-24FEB-T3.7',  'U3-24FEB-T3.8', 'U3-24FEB-T3.9',
+                    'U3-25FEB-T4.0',
+            
+                    
+                    # March 2024 Payrolls
+                    'U3-24MAR-T3.3',  'U3-24MAR-T3.4', 'U3-24MAR-T3.5',
+                    'U3-24MAR-T3.6', 'U3-24MAR-T3.7',  'U3-24MAR-T3.8', 'U3-24MAR-T3.9',
+                    'U3-25MAR-T4.0', 'U3-25MAR-T4.1', 'U3-25MAR-T4.2',
+            
+                    # April 2024 Payrolls
+                    'U3-24APR-T3.3',  'U3-24APR-T3.4', 'U3-24APR-T3.5',
+                    'U3-24APR-T3.6', 'U3-24APR-T3.7',  'U3-24APR-T3.8', 'U3-24APR-T3.9',
+                    'U3-25APR-T4.0', 'U3-25APR-T4.1', 'U3-25APR-T4.2',
+            
+            
+                    # May 2024 Payrolls
+                    'U3-24MAY-T3.3',  'U3-24MAY-T3.4', 'U3-24MAY-T3.5',
+                    'U3-24MAY-T3.6', 'U3-24MAY-T3.7',  'U3-24MAY-T3.8', 'U3-24MAY-T3.9',
+                    'U3-25MAY-T4.0', 'U3-25MAY-T4.1', 'U3-25MAY-T4.2',
+            
+                    # June 2024 Payrolls
+                    'U3-24JUN-T3.3',  'U3-24JUN-T3.4', 'U3-24JUN-T3.5',
+                    'U3-24JUN-T3.6', 'U3-24JUN-T3.7',  'U3-24JUN-T3.8', 'U3-24JUN-T3.9',
+                    'U3-25JUN-T4.0', 'U3-25JUN-T4.1', 'U3-25JUN-T4.2',
+            
+                    # July 2024 Payrolls
+                    'U3-24JUL-T3.5',
+                    'U3-24JUL-T3.6', 'U3-24JUL-T3.7',  'U3-24JUL-T3.8', 'U3-24JUL-T3.9',
+                    'U3-25JUL-T4.0', 'U3-25JUL-T4.1', 'U3-25JUL-T4.2', 'U3-25JUL-T4.3'
+            
+                    # August 2024 Payrolls
+                    'U3-24AUG-T3.6', 'U3-24AUG-T3.7',  'U3-24AUG-T3.8', 'U3-24AUG-T3.9',
+                    'U3-25AUG-T4.0', 'U3-25AUG-T4.1', 'U3-25AUG-T4.2', 'U3-25AUG-T4.3',
+                    'U3-25AUG-T4.4', 'U3-25AUG-T4.5'
+            
+                    # September 2024 Payrolls
+                    'U3-24SEP-T3.7',  'U3-24SEP-T3.8', 'U3-24SEP-T3.9',
+                    'U3-25SEP-T4.0', 'U3-25SEP-T4.1', 'U3-25SEP-T4.2', 'U3-25SEP-T4.3',
+                    'U3-25SEP-T4.4', 'U3-25SEP-T4.5', 'U3-25SEP-T4.6'
+            
+                    # October 2024 Payrolls
+                    'U3-24OCT-T3.6', 'U3-24OCT-T3.7',  'U3-24OCT-T3.8', 'U3-24OCT-T3.9',
+                    'U3-25OCT-T4.0', 'U3-25OCT-T4.1', 'U3-25OCT-T4.2', 'U3-25OCT-T4.3',
+                    'U3-25OCT-T4.4', 'U3-25OCT-T4.5'
+            
+            
+                    # November 2024 Payrolls
+                   'KXU3-24NOV-T3.4', 'KXU3-24NOV-T3.5' ,'KXU3-24NOV-T3.6', 
+                   'KXU3-24NOV-T3.7',  'KXU3-24NOV-T3.8', 'KXU3-24NOV-T3.9',
+                   'KXU3-25NOV-T4.0', 'KXU3-25NOV-T4.1', 'KXU3-25NOV-T4.2',
+            
+            
+                    # December 2024 Payrolls
+                   'KXU3-24DEC-T3.8', 'KXU3-24DEC-T3.9',
+                   'KXU3-25DEC-T4.0', 'KXU3-25DEC-T4.1', 'KXU3-25DEC-T4.2',
+                   'KXU3-25DEC-T4.3',
+            
+            
+            
+                    # January 2025 Payrolls
+                    'KXU3-25JAN-T3.8', 'KXU3-25JAN-T3.9',
+                    'KXU3-25JAN-T4.0', 'KXU3-25JAN-T4.1', 'KXU3-25JAN-T4.2',
+                    'KXU3-25JAN-T4.3',
+            
+                    # February 2025 Payrolls
+                    'KXU3-25FEB-T3.8', 'KXU3-25FEB-T3.9',
+                    'KXU3-25FEB-T4.0', 'KXU3-25FEB-T4.1', 'KXU3-25FEB-T4.2',
+                    'KXU3-25FEB-T4.3', 
+                    
+                    # March 2025 Payrolls
+                    'KXU3-25MAR-T3.8', 'KXU3-25MAR-T3.9',
+                    'KXU3-25MAR-T4.0', 'KXU3-25MAR-T4.1', 'KXU3-25MAR-T4.2',
+                    'KXU3-25MAR-T4.3', 'KXU3-25MAR-T4.4', 'KXU3-25MAR-T4.5'
+                    
+                    # April 2025 Payrolls
+                    'KXU3-25APR-T3.8', 'KXU3-25APR-T3.9',
+                    'KXU3-25APR-T4.0', 'KXU3-25APR-T4.1', 'KXU3-25APR-T4.2',
+                    'KXU3-25APR-T4.3', 'KXU3-25APR-T4.4', 'KXU3-25APR-T4.5'
+                    
+                    # May 2025 Payrolls
+                    'KXU3-25MAY-T3.8', 'KXU3-25MAY-T3.9',
+                    'KXU3-25MAY-T4.0', 'KXU3-25MAY-T4.1', 'KXU3-25MAY-T4.2',
+                    'KXU3-25MAY-T4.3', 'KXU3-25MAY-T4.4', 'KXU3-25MAY-T4.5'
+                    
+                    # June 2025 Payrolls
+                    'KXU3-25JUN-T4.0', 'KXU3-25JUN-T4.1', 'KXU3-25JUN-T4.2',
+                    'KXU3-25JUN-T4.3', 'KXU3-25JUN-T4.4', 'KXU3-25JUN-T4.5'
+            
+                    # July 2025 Payrolls
+                    'KXU3-25JUL-T3.8', 'KXU3-25JUL-T3.9',
+                    'KXU3-25JUL-T4.0', 'KXU3-25JUL-T4.1', 'KXU3-25JUL-T4.2',
+                    'KXU3-25JUL-T4.3'
+            
+            ]
+    
         
     return(tickers)
