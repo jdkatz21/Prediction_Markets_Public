@@ -370,12 +370,6 @@ export default function App() {
         </div>
       )}
 
-      {!selectedType == 'unemployment_releases'(
-        <div className="text-sm text-red-600 space-y-1">
-          <p>unemployment_releases data is experimental. Use at your own caution.</p>
-        </div>
-      )}
-
       {/* Footer */}
       {selectedContract && (
         <div className="mt-6 text-sm text-gray-600 space-y-2 border-t pt-4">
