@@ -8,11 +8,12 @@ import CustomTooltip from './CustomTooltip';
 import AnimatedBar from './AnimatedBar';
 
 
-const API = 'https://prediction-markets-public-1.onrender.com:';
+// const API = 'https://prediction-markets-public-1.onrender.com:';
+const API = 'http://localhost:8000';
 
 
 function createBinLabels(strikes, smallestBin, largestBin, type) {
-  const increment = type === "headline_cpi_releases" ? 0.1 : 0.25;
+  const increment = type === "headline_cpi_releases" | type === "unemployment_releases" ? 0.1 : 0.25;
 
   return strikes.map((s, i) => {
     const rounded = (val) => parseFloat((Math.round(val * 100) / 100).toFixed(2));
@@ -56,6 +57,7 @@ export default function App() {
   const marketPaths = {
     fed_levels: '/kxfed/fed-funds-rate',
     headline_cpi_releases: '/kxcpiyoy/inflation',
+    unemployment_releases: '/kxu3/unemployment'
     // Add more types as needed
   };
 

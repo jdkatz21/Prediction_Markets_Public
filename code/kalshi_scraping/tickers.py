@@ -685,9 +685,9 @@ def get_tickers(ticker_desc):
             'KXACPI-2025-6.0',
             
             # Annual CPI 2024
-            'ACPI-24-C1.0', 'ACPI-24-B1.5', 'ACPI-24-B2.5', 
-            'ACPI-24-B3.5', 'ACPI-24-B4.5', 'ACPI-24-B5.5', 
-            'ACPI-24-B6.5', 'ACPI-24-C7.0'
+            'ACPI-23-C1.0', 'ACPI-23-B1.5', 'ACPI-23-B2.5', 
+            'ACPI-23-B3.5', 'ACPI-23-B4.5', 'ACPI-23-B5.5', 
+            'ACPI-23-B6.5', 'ACPI-23-C7.0'
             
             # Annual CPI 2023
             'ACPI-23-C1.0', 'ACPI-23-B1.5', 'ACPI-23-B2.5', 
@@ -842,7 +842,7 @@ def get_tickers(ticker_desc):
         
         tickers = [
                 'RECSSNBER-21', 'RECSSNBER-22', 'RECSSNBER-23', 
-                'RECSSNBER-24', 'RECSSNBER-25' 
+                'RECSSNBER-23', 'RECSSNBER-25' 
             ]
         
         
@@ -862,69 +862,196 @@ def get_tickers(ticker_desc):
         
         tickers = [
             
+                    # January 2022 Payrolls
+                    'U3-22JAN-T3.2', 'U3-22JAN-T3.3',  'U3-22JAN-T3.4', 'U3-22JAN-T3.5',
+                    'U3-22JAN-T3.6', 'U3-22JAN-T3.7',  'U3-22JAN-T3.8', 'U3-22JAN-T3.9',
+                    'U3-22JAN-T4.0',
+            
+                    # February 2022 Payrolls
+                    'U3-22FEB-T3.4', 'U3-22FEB-T3.5',
+                    'U3-22FEB-T3.6', 'U3-22FEB-T3.7',  'U3-22FEB-T3.8', 'U3-22FEB-T3.9',
+                    'U3-22FEB-T4.0',
+                    
+                    # March 2022 Payrolls
+                    'U3-22MAR-T3.3',  'U3-22MAR-T3.4', 'U3-22MAR-T3.5',
+                    'U3-22MAR-T3.6', 'U3-22MAR-T3.7',  'U3-22MAR-T3.8', 'U3-22MAR-T3.9',
+                    'U3-22MAR-T4.0', 'U3-22MAR-T4.1', 'U3-22MAR-T4.2',
+            
+                    # April 2022 Payrolls
+                    'U3-22APR-T3.3',  'U3-22APR-T3.4', 'U3-22APR-T3.5',
+                    'U3-22APR-T3.6', 'U3-22APR-T3.7',  'U3-22APR-T3.8', 'U3-22APR-T3.9',
+                    'U3-22APR-T4.0', 'U3-22APR-T4.1', 'U3-22APR-T4.2',
+            
+            
+                    # May 2022 Payrolls
+                    'U3-22MAY-T3.3',  'U3-22MAY-T3.4', 'U3-22MAY-T3.5',
+                    'U3-22MAY-T3.6', 'U3-22MAY-T3.7',  'U3-22MAY-T3.8', 'U3-22MAY-T3.9',
+                    'U3-22MAY-T4.0', 'U3-22MAY-T4.1', 'U3-22MAY-T4.2',
+            
+                    # June 2022 Payrolls
+                    'U3-22JUN-T3.3',  'U3-22JUN-T3.4', 'U3-22JUN-T3.5',
+                    'U3-22JUN-T3.6', 'U3-22JUN-T3.7',  'U3-22JUN-T3.8', 'U3-22JUN-T3.9',
+                    'U3-22JUN-T4.0', 'U3-22JUN-T4.1', 'U3-22JUN-T4.2',
+            
+                    # July 2022 Payrolls
+                    'U3-22JUL-T3.5',
+                    'U3-22JUL-T3.6', 'U3-22JUL-T3.7',  'U3-22JUL-T3.8', 'U3-22JUL-T3.9',
+                    'U3-22JUL-T4.0', 'U3-22JUL-T4.1', 'U3-22JUL-T4.2', 'U3-22JUL-T4.3'
+            
+                    # August 2022 Payrolls
+                    'U3-22AUG-T3.6', 'U3-22AUG-T3.7',  'U3-22AUG-T3.8', 'U3-22AUG-T3.9',
+                    'U3-22AUG-T4.0', 'U3-22AUG-T4.1', 'U3-22AUG-T4.2', 'U3-22AUG-T4.3',
+                    'U3-22AUG-T4.4', 'U3-22AUG-T4.5'
+            
+                    # September 2022 Payrolls
+                    'U3-22SEP-T3.7',  'U3-22SEP-T3.8', 'U3-22SEP-T3.9',
+                    'U3-22SEP-T4.0', 'U3-22SEP-T4.1', 'U3-22SEP-T4.2', 'U3-22SEP-T4.3',
+                    'U3-22SEP-T4.4', 'U3-22SEP-T4.5', 'U3-22SEP-T4.6'
+            
+                    # October 2022 Payrolls
+                    'U3-22OCT-T3.6', 'U3-22OCT-T3.7',  'U3-22OCT-T3.8', 'U3-22OCT-T3.9',
+                    'U3-22OCT-T4.0', 'U3-22OCT-T4.1', 'U3-22OCT-T4.2', 'U3-22OCT-T4.3',
+                    'U3-22OCT-T4.4', 'U3-22OCT-T4.5'
+            
+            
+                    # November 2022 Payrolls
+                   'KXU3-22NOV-T3.4', 'KXU3-22NOV-T3.5' ,'KXU3-22NOV-T3.6', 
+                   'KXU3-22NOV-T3.7',  'KXU3-22NOV-T3.8', 'KXU3-22NOV-T3.9',
+                   'KXU3-22NOV-T4.0', 'KXU3-22NOV-T4.1', 'KXU3-22NOV-T4.2',
+            
+            
+                    # December 2022 Payrolls
+                   'KXU3-22DEC-T3.8', 'KXU3-22DEC-T3.9',
+                   'KXU3-22DEC-T4.0', 'KXU3-22DEC-T4.1', 'KXU3-22DEC-T4.2',
+                   'KXU3-22DEC-T4.3',
+
+                    # January 2022 Payrolls
+                    'U3-23JAN-T3.2', 'U3-23JAN-T3.3',  'U3-23JAN-T3.4', 'U3-23JAN-T3.5',
+                    'U3-23JAN-T3.6', 'U3-23JAN-T3.7',  'U3-23JAN-T3.8', 'U3-23JAN-T3.9',
+                    'U3-23JAN-T4.0',
+            
+                    # February 2023 Payrolls
+                    'U3-23FEB-T3.4', 'U3-23FEB-T3.5',
+                    'U3-23FEB-T3.6', 'U3-23FEB-T3.7',  'U3-23FEB-T3.8', 'U3-23FEB-T3.9',
+                    'U3-23FEB-T4.0',
+                    
+                    # March 2023 Payrolls
+                    'U3-23MAR-T3.3',  'U3-23MAR-T3.4', 'U3-23MAR-T3.5',
+                    'U3-23MAR-T3.6', 'U3-23MAR-T3.7',  'U3-23MAR-T3.8', 'U3-23MAR-T3.9',
+                    'U3-23MAR-T4.0', 'U3-23MAR-T4.1', 'U3-23MAR-T4.2',
+            
+                    # April 2023 Payrolls
+                    'U3-23APR-T3.3',  'U3-23APR-T3.4', 'U3-23APR-T3.5',
+                    'U3-23APR-T3.6', 'U3-23APR-T3.7',  'U3-23APR-T3.8', 'U3-23APR-T3.9',
+                    'U3-23APR-T4.0', 'U3-23APR-T4.1', 'U3-23APR-T4.2',
+            
+            
+                    # May 2023 Payrolls
+                    'U3-23MAY-T3.3',  'U3-23MAY-T3.4', 'U3-23MAY-T3.5',
+                    'U3-23MAY-T3.6', 'U3-23MAY-T3.7',  'U3-23MAY-T3.8', 'U3-23MAY-T3.9',
+                    'U3-23MAY-T4.0', 'U3-23MAY-T4.1', 'U3-23MAY-T4.2',
+            
+                    # June 2023 Payrolls
+                    'U3-23JUN-T3.3',  'U3-23JUN-T3.4', 'U3-23JUN-T3.5',
+                    'U3-23JUN-T3.6', 'U3-23JUN-T3.7',  'U3-23JUN-T3.8', 'U3-23JUN-T3.9',
+                    'U3-23JUN-T4.0', 'U3-23JUN-T4.1', 'U3-23JUN-T4.2',
+            
+                    # July 2023 Payrolls
+                    'U3-23JUL-T3.5',
+                    'U3-23JUL-T3.6', 'U3-23JUL-T3.7',  'U3-23JUL-T3.8', 'U3-23JUL-T3.9',
+                    'U3-23JUL-T4.0', 'U3-23JUL-T4.1', 'U3-23JUL-T4.2', 'U3-23JUL-T4.3'
+            
+                    # August 2023 Payrolls
+                    'U3-23AUG-T3.6', 'U3-23AUG-T3.7',  'U3-23AUG-T3.8', 'U3-23AUG-T3.9',
+                    'U3-23AUG-T4.0', 'U3-23AUG-T4.1', 'U3-23AUG-T4.2', 'U3-23AUG-T4.3',
+                    'U3-23AUG-T4.4', 'U3-23AUG-T4.5'
+            
+                    # September 2023 Payrolls
+                    'U3-23SEP-T3.7',  'U3-23SEP-T3.8', 'U3-23SEP-T3.9',
+                    'U3-23SEP-T4.0', 'U3-23SEP-T4.1', 'U3-23SEP-T4.2', 'U3-23SEP-T4.3',
+                    'U3-23SEP-T4.4', 'U3-23SEP-T4.5', 'U3-23SEP-T4.6'
+            
+                    # October 2023 Payrolls
+                    'U3-23OCT-T3.6', 'U3-23OCT-T3.7',  'U3-23OCT-T3.8', 'U3-23OCT-T3.9',
+                    'U3-23OCT-T4.0', 'U3-23OCT-T4.1', 'U3-23OCT-T4.2', 'U3-23OCT-T4.3',
+                    'U3-23OCT-T4.4', 'U3-23OCT-T4.5'
+            
+            
+                    # November 2023 Payrolls
+                   'KXU3-23NOV-T3.4', 'KXU3-23NOV-T3.5' ,'KXU3-23NOV-T3.6', 
+                   'KXU3-23NOV-T3.7',  'KXU3-23NOV-T3.8', 'KXU3-23NOV-T3.9',
+                   'KXU3-23NOV-T4.0', 'KXU3-23NOV-T4.1', 'KXU3-23NOV-T4.2',
+            
+            
+                    # December 2023 Payrolls
+                   'KXU3-23DEC-T3.8', 'KXU3-23DEC-T3.9',
+                   'KXU3-23DEC-T4.0', 'KXU3-23DEC-T4.1', 'KXU3-23DEC-T4.2',
+                   'KXU3-23DEC-T4.3',
+
+
                     # January 2024 Payrolls
                     'U3-24JAN-T3.2', 'U3-24JAN-T3.3',  'U3-24JAN-T3.4', 'U3-24JAN-T3.5',
                     'U3-24JAN-T3.6', 'U3-24JAN-T3.7',  'U3-24JAN-T3.8', 'U3-24JAN-T3.9',
-                    'U3-25JAN-T4.0',
+                    'U3-24JAN-T4.0',
             
                     # February 2024 Payrolls
                     'U3-24FEB-T3.4', 'U3-24FEB-T3.5',
                     'U3-24FEB-T3.6', 'U3-24FEB-T3.7',  'U3-24FEB-T3.8', 'U3-24FEB-T3.9',
-                    'U3-25FEB-T4.0',
+                    'U3-24FEB-T4.0',
             
                     
                     # March 2024 Payrolls
                     'U3-24MAR-T3.3',  'U3-24MAR-T3.4', 'U3-24MAR-T3.5',
                     'U3-24MAR-T3.6', 'U3-24MAR-T3.7',  'U3-24MAR-T3.8', 'U3-24MAR-T3.9',
-                    'U3-25MAR-T4.0', 'U3-25MAR-T4.1', 'U3-25MAR-T4.2',
+                    'U3-24MAR-T4.0', 'U3-24MAR-T4.1', 'U3-24MAR-T4.2',
             
                     # April 2024 Payrolls
                     'U3-24APR-T3.3',  'U3-24APR-T3.4', 'U3-24APR-T3.5',
                     'U3-24APR-T3.6', 'U3-24APR-T3.7',  'U3-24APR-T3.8', 'U3-24APR-T3.9',
-                    'U3-25APR-T4.0', 'U3-25APR-T4.1', 'U3-25APR-T4.2',
+                    'U3-24APR-T4.0', 'U3-24APR-T4.1', 'U3-24APR-T4.2',
             
             
                     # May 2024 Payrolls
                     'U3-24MAY-T3.3',  'U3-24MAY-T3.4', 'U3-24MAY-T3.5',
                     'U3-24MAY-T3.6', 'U3-24MAY-T3.7',  'U3-24MAY-T3.8', 'U3-24MAY-T3.9',
-                    'U3-25MAY-T4.0', 'U3-25MAY-T4.1', 'U3-25MAY-T4.2',
+                    'U3-24MAY-T4.0', 'U3-24MAY-T4.1', 'U3-24MAY-T4.2',
             
                     # June 2024 Payrolls
                     'U3-24JUN-T3.3',  'U3-24JUN-T3.4', 'U3-24JUN-T3.5',
                     'U3-24JUN-T3.6', 'U3-24JUN-T3.7',  'U3-24JUN-T3.8', 'U3-24JUN-T3.9',
-                    'U3-25JUN-T4.0', 'U3-25JUN-T4.1', 'U3-25JUN-T4.2',
+                    'U3-24JUN-T4.0', 'U3-24JUN-T4.1', 'U3-24JUN-T4.2',
             
                     # July 2024 Payrolls
                     'U3-24JUL-T3.5',
                     'U3-24JUL-T3.6', 'U3-24JUL-T3.7',  'U3-24JUL-T3.8', 'U3-24JUL-T3.9',
-                    'U3-25JUL-T4.0', 'U3-25JUL-T4.1', 'U3-25JUL-T4.2', 'U3-25JUL-T4.3'
+                    'U3-24JUL-T4.0', 'U3-24JUL-T4.1', 'U3-24JUL-T4.2', 'U3-24JUL-T4.3'
             
                     # August 2024 Payrolls
                     'U3-24AUG-T3.6', 'U3-24AUG-T3.7',  'U3-24AUG-T3.8', 'U3-24AUG-T3.9',
-                    'U3-25AUG-T4.0', 'U3-25AUG-T4.1', 'U3-25AUG-T4.2', 'U3-25AUG-T4.3',
-                    'U3-25AUG-T4.4', 'U3-25AUG-T4.5'
+                    'U3-24AUG-T4.0', 'U3-24AUG-T4.1', 'U3-24AUG-T4.2', 'U3-24AUG-T4.3',
+                    'U3-24AUG-T4.4', 'U3-24AUG-T4.5'
             
                     # September 2024 Payrolls
                     'U3-24SEP-T3.7',  'U3-24SEP-T3.8', 'U3-24SEP-T3.9',
-                    'U3-25SEP-T4.0', 'U3-25SEP-T4.1', 'U3-25SEP-T4.2', 'U3-25SEP-T4.3',
-                    'U3-25SEP-T4.4', 'U3-25SEP-T4.5', 'U3-25SEP-T4.6'
+                    'U3-24SEP-T4.0', 'U3-24SEP-T4.1', 'U3-24SEP-T4.2', 'U3-24SEP-T4.3',
+                    'U3-24SEP-T4.4', 'U3-24SEP-T4.5', 'U3-24SEP-T4.6'
             
                     # October 2024 Payrolls
                     'U3-24OCT-T3.6', 'U3-24OCT-T3.7',  'U3-24OCT-T3.8', 'U3-24OCT-T3.9',
-                    'U3-25OCT-T4.0', 'U3-25OCT-T4.1', 'U3-25OCT-T4.2', 'U3-25OCT-T4.3',
-                    'U3-25OCT-T4.4', 'U3-25OCT-T4.5'
+                    'U3-24OCT-T4.0', 'U3-24OCT-T4.1', 'U3-24OCT-T4.2', 'U3-24OCT-T4.3',
+                    'U3-24OCT-T4.4', 'U3-24OCT-T4.5'
             
             
                     # November 2024 Payrolls
                    'KXU3-24NOV-T3.4', 'KXU3-24NOV-T3.5' ,'KXU3-24NOV-T3.6', 
                    'KXU3-24NOV-T3.7',  'KXU3-24NOV-T3.8', 'KXU3-24NOV-T3.9',
-                   'KXU3-25NOV-T4.0', 'KXU3-25NOV-T4.1', 'KXU3-25NOV-T4.2',
+                   'KXU3-24NOV-T4.0', 'KXU3-24NOV-T4.1', 'KXU3-24NOV-T4.2',
             
             
                     # December 2024 Payrolls
                    'KXU3-24DEC-T3.8', 'KXU3-24DEC-T3.9',
-                   'KXU3-25DEC-T4.0', 'KXU3-25DEC-T4.1', 'KXU3-25DEC-T4.2',
-                   'KXU3-25DEC-T4.3',
+                   'KXU3-24DEC-T4.0', 'KXU3-24DEC-T4.1', 'KXU3-24DEC-T4.2',
+                   'KXU3-24DEC-T4.3',
             
             
             

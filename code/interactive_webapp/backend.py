@@ -21,7 +21,8 @@ DATA_DIR = '../../data/daily_distribution_data/'
 FILES = {
     'fed_levels': 'daily_distributions_fed_levels.csv',
     'headline_cpi_releases': 'daily_distributions_headline_cpi_releases.csv',
-    # 'unemployment_releases': 'daily_distributions_unemployment_releases.csv',
+    'unemployment_releases': 'daily_distributions_unemployment_releases.csv',
+    
 }
 HORIZON_MAP = {
     'FED-25JUL': '2025-07-30',
@@ -50,7 +51,7 @@ def apply_horizon_override(df: pd.DataFrame) -> pd.DataFrame:
 kalshi_data = pd.concat([
     apply_horizon_override(load_and_process_csv(f"{DATA_DIR}{FILES['fed_levels']}", 'fed_levels')),
     load_and_process_csv(f"{DATA_DIR}{FILES['headline_cpi_releases']}", 'headline_cpi_releases'),
-    # load_and_process_csv(f"{DATA_DIR}{FILES['unemployment_releases']}", 'unemployment_releases'),
+    load_and_process_csv(f"{DATA_DIR}{FILES['unemployment_releases']}", 'unemployment_releases'),
 ], ignore_index=True)
 
 
