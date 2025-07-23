@@ -8,7 +8,7 @@ import CustomTooltip from './CustomTooltip';
 import AnimatedBar from './AnimatedBar';
 
 
-const API = 'http://localhost:8000';
+const API = 'https://prediction-markets-public-1.onrender.com:';
 
 
 function createBinLabels(strikes, smallestBin, largestBin, type) {
