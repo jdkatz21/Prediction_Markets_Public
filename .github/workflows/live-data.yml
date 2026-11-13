@@ -65,17 +65,22 @@ jobs:
           KALSHI_PRIVATE_KEY: ${{ secrets.KALSHI_PRIVATE_KEY }}
         run: python code/live_pipeline/update_trades.py
 
+      # Save the trades right away, so a failure in a later step doesn't mean
+      # downloading them again (the archive only ever gains complete days)
+      - name: Upload trade archive to S3
+        run: aws s3 sync data/trade_level_data $BUCKET/trade_level_data
+
       # -----------------------
       # R: distributions and moments
       # -----------------------
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true   # prebuilt packages for the runner's Ubuntu version
 
       - name: Install R dependencies
         run: |
-          install.packages(c("tidyverse", "lubridate", "matrixStats", "collapse", "DescTools"),
-                          repos = c("https://packagemanager.posit.co/cran/__linux__/jammy/latest",
-                                   "https://cloud.r-project.org"))
+          install.packages(c("tidyverse", "lubridate", "matrixStats", "collapse", "DescTools"))
         shell: Rscript {0}
 
       - name: Create output directories
