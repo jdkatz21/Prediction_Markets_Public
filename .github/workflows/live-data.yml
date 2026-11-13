@@ -2,7 +2,7 @@ name: Live Data Update
 
 # Daily incremental update for econfutures.com. Each morning it adds the previous
 # day's trades (UTC) to the archive on S3 (code/live_pipeline/update_trades.py),
-# reruns the distributions and moments (code/convert_trades_to_pdfs/data_convert_runner.R),
+# reruns the distributions and moments (code/live_pipeline/convert_runner.R),
 # keeps everything already posted exactly as it was (code/live_pipeline/freeze_outputs.py),
 # and uploads the result back to S3.
 on:
@@ -89,7 +89,7 @@ jobs:
           mkdir -p data/daily_moments_data
 
       - name: Run R script to convert to PDFs and Moments Data
-        run: Rscript code/convert_trades_to_pdfs/data_convert_runner.R
+        run: Rscript code/live_pipeline/convert_runner.R
 
       - name: Keep already-posted data unchanged
         run: python code/live_pipeline/freeze_outputs.py published

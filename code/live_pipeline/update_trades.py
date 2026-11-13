@@ -28,8 +28,10 @@ Only complete days are kept: trades from the current day (in UTC, which is the
 day the R code assigns each trade to) are left out and picked up by the next
 day's run. Once a day is in the archive, no more trades are added to it.
 
-The output files have the same names and columns as scrape_kalshi_trades.py, so
-code/convert_trades_to_pdfs/data_convert_runner.R runs on them unchanged.
+The trade files have the same names and columns as scrape_kalshi_trades.py. The
+script also saves each live contract's scheduled close date to data/close_dates,
+which code/live_pipeline/convert_runner.R uses to place the window before each
+meeting or release for contracts that are still trading.
 
 Usage:
 ------
@@ -88,6 +90,7 @@ SERIES = {
 }
 
 TRADE_DIR = 'data/trade_level_data'
+CLOSE_DATE_DIR = 'data/close_dates'
 
 HISTORICAL_TRADES_URL = "/trade-api/v2/historical/trades"
 LIVE_TRADES_URL = "/trade-api/v2/markets/trades"
@@ -147,11 +150,28 @@ def paginate(client, url: str, params: dict, result_key: str) -> list:
             return results
 
 
-def live_market_tickers(client, series_ticker: str) -> list:
+def live_markets(client, series_ticker: str) -> list:
     """Markets in a series that are still on the live endpoint, i.e. can get new trades."""
-    markets = paginate(client, LIVE_MARKETS_URL,
-                       {'series_ticker': series_ticker, 'limit': 1000}, 'markets')
-    return [m['ticker'] for m in markets]
+    return paginate(client, LIVE_MARKETS_URL,
+                    {'series_ticker': series_ticker, 'limit': 1000}, 'markets')
+
+
+def save_close_dates(name: str, markets: list) -> None:
+    """
+    Save each live contract's scheduled close date (UTC) for the R step. For finished
+    contracts the R code uses the last day with a trade as the expiry date; contracts
+    still trading have no last day yet, so their window before the meeting or release
+    is anchored on the scheduled close instead (see code/live_pipeline/convert_runner.R).
+    """
+    closes = {}
+    for m in markets:
+        event, close = m['event_ticker'], m['close_time'][:10]
+        closes[event] = max(closes.get(event, close), close)
+
+    os.makedirs(CLOSE_DATE_DIR, exist_ok=True)
+    path = os.path.join(CLOSE_DATE_DIR, f'close_dates_{name}.csv')
+    pd.DataFrame(sorted(closes.items()), columns=['contract_preamble', 'close_date']).to_csv(path, index=False)
+    print(f"  Saved scheduled close dates for {len(closes)} contracts to {path}")
 
 
 def trade_times(trades: pd.DataFrame) -> pd.Series:
@@ -196,6 +216,9 @@ def update_series(client, name: str, series_ticker: str) -> None:
     path = os.path.join(TRADE_DIR, f'trade_level_data_{name}.csv')
     print(f"\n=== {name} ({series_ticker}) ===")
 
+    markets = live_markets(client, series_ticker)
+    save_close_dates(name, markets)
+
     if not os.path.exists(path):
         print(f"  No archive at {path}, downloading full history")
         before = 0
@@ -209,7 +232,7 @@ def update_series(client, name: str, series_ticker: str) -> None:
         latest = trade_times(archive).groupby(archive['ticker']).max()
 
         new_trades = []
-        for ticker in live_market_tickers(client, series_ticker):
+        for ticker in [m['ticker'] for m in markets]:
             after = latest.get(ticker)
             trades = fetch_new_trades(client, ticker, after)
             label = "full history" if after is None else f"since {after}"
