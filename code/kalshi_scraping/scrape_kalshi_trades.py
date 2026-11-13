@@ -89,18 +89,21 @@ env = Environment.PROD
 
 # In GitHub Actions, don't load from .env file
 # Only load .env if it exists (for local development)
-# if os.path.exists("env.env"):
-#     load_dotenv("env.env")
+if os.path.exists("env.env"):
+    load_dotenv("env.env")
 
 KEYID = os.getenv("KALSHI_KEYID")
 PRIVATE_KEY_STR = os.getenv("KALSHI_PRIVATE_KEY")
 
-# If running local on device
-# with open(PRIVATE_KEY_STR, "rb") as f:
-#     private_key = serialization.load_pem_private_key(f.read(), password=None)
+# KALSHI_PRIVATE_KEY can be either the key itself (GitHub Actions secret) or
+# a path to the key file (local, e.g. KALSHI_PRIVATE_KEY=key.txt in env.env)
+if PRIVATE_KEY_STR.lstrip().startswith("-----BEGIN"):
+    private_key_bytes = PRIVATE_KEY_STR.encode()
+else:
+    with open(PRIVATE_KEY_STR, "rb") as f:
+        private_key_bytes = f.read()
 
-# If running on github actions
-private_key = serialization.load_pem_private_key(PRIVATE_KEY_STR.encode(), password=None)
+private_key = serialization.load_pem_private_key(private_key_bytes, password=None)
 
 # Initialize the HTTP client
 client = KalshiHttpClient(
@@ -212,32 +215,56 @@ def scrape_kalshi(output_filename: str, tickers: list):
 ##       Getting the data       ##
 ##################################
 
-# Autogenerate the tickers using Kalshi's API
-levels_tickers = tickers.autogenerate_kalshi_tickers('KXFED')
-decisions_tickers = tickers.autogenerate_kalshi_tickers('KXFEDDECISION')
-cpi_tickers = tickers.autogenerate_kalshi_tickers('KXCPIYOY')
-cpi_end_of_year_tickers = tickers.autogenerate_kalshi_tickers('KXACPI')
-core_cpi_tickers = tickers.autogenerate_kalshi_tickers('KXCPICOREYOY')
-gdp_end_of_year_tickers = tickers.autogenerate_kalshi_tickers('KXGDPYEAR')
-payrolls_tickers = tickers.autogenerate_kalshi_tickers('KXPAYROLLS')
-unemployment_tickers = tickers.autogenerate_kalshi_tickers('KXU3')
-cpi_tickers_mom = tickers.autogenerate_kalshi_tickers('KXCPI')
+"""
+Each series maps a name to its Kalshi series ticker and the csv its trades are
+saved to. Running the script with no arguments scrapes the default series,
+which are the ones the website and GitHub Action use. To scrape only some
+series locally, pass their names instead, e.g.
 
-scrape_kalshi('data/trade_level_data/trade_level_data_fed_levels.csv', levels_tickers)
+    python code/kalshi_scraping/scrape_kalshi_trades.py headline_cpi_releases
 
-# scrape_kalshi('data/trade_level_data/trade_level_data_fed_decisions.csv', decisions_tickers)
+Add --info to also download market info (how and when each market resolved)
+to data/ticker_info/.
+"""
 
-scrape_kalshi('data/trade_level_data/trade_level_data_headline_cpi_releases.csv', cpi_tickers)
+SERIES = {
+    'fed_levels':                 'KXFED',
+    'fed_decisions':              'KXFEDDECISION',
+    'headline_cpi_releases':      'KXCPIYOY',
+    'headline_cpi_end_of_year':   'KXACPI',
+    'core_cpi_releases':          'KXCPICOREYOY',
+    'headline_cpi_releases_mom':  'KXCPI',
+    'gdp_end_of_year':            'KXGDPYEAR',
+    'gdp_quarterly':              'KXGDP',
+    'payrolls':                   'KXPAYROLLS',
+    'unemployment':               'KXU3',
+    'trump_weekly_mentions':      'KXTRUMPSAY',
+    'fed_mentions':               'KXFEDMENTION',
+}
 
-scrape_kalshi('data/trade_level_data/trade_level_data_headline_cpi_end_of_year.csv', cpi_end_of_year_tickers)
+# Series scraped when no names are given (feeds data_convert_runner.R and the website)
+DEFAULT_SERIES = [
+    'fed_levels',
+    'headline_cpi_releases',
+    'headline_cpi_end_of_year',
+    'core_cpi_releases',
+    'headline_cpi_releases_mom',
+    'gdp_end_of_year',
+    'unemployment',
+]
 
-scrape_kalshi('data/trade_level_data/trade_level_data_core_cpi_releases.csv', core_cpi_tickers)
+args = sys.argv[1:]
+get_info = '--info' in args
+selected = [a for a in args if a != '--info'] or DEFAULT_SERIES
 
-scrape_kalshi('data/trade_level_data/trade_level_data_headline_cpi_releases_mom.csv', cpi_tickers_mom)
+unknown = [name for name in selected if name not in SERIES]
+if unknown:
+    sys.exit(f"Unknown series: {', '.join(unknown)}. Choose from: {', '.join(SERIES)}")
 
-scrape_kalshi('data/trade_level_data/trade_level_data_gdp_end_of_year.csv', gdp_end_of_year_tickers)
+for name in selected:
+    series_tickers = tickers.autogenerate_kalshi_tickers(SERIES[name])
 
-# scrape_kalshi('data/trade_level_data/trade_level_data_payrolls.csv', payrolls_tickers)
+    if get_info:
+        tickers.get_market_info(series_tickers, f'data/ticker_info/ticker_info_{name}.csv')
 
-scrape_kalshi('data/trade_level_data/trade_level_data_unemployment.csv', unemployment_tickers)
-
+    scrape_kalshi(f'data/trade_level_data/trade_level_data_{name}.csv', series_tickers)

@@ -1,6 +1,27 @@
 env.env
 key.txt
 code/polymarket_fed_trades.csv
-code/polymarket_fed_trades.csv.gzdata/
-output/
+code/polymarket_fed_trades.csv.gz
 data/
+output/
+tables/
+
+# Paper analysis code (not part of the public replication package)
+code/analysis/
+code/insider_trading/
+code/scratch.R
+code/kalshi_scraping/scratch.py
+
+# Working files in the project root (drafts, papers, one-off exports)
+/*.pdf
+/*.csv
+/*.sqlite
+/*.log
+/*.tex
+
+# R, Python and macOS clutter
+.DS_Store
+.Rhistory
+.RData
+__pycache__/
+*.pyc
