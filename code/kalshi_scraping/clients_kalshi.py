@@ -227,7 +227,8 @@ class KalshiHttpClient(KalshiBaseClient):
 
         return combined
 
-
+    def get_market(self, ticker: str) -> Dict[str, Any]:
+        return self.get(f"/trade-api/v2/historical/markets/{ticker}")["market"]
 
 class KalshiWebSocketClient(KalshiBaseClient):
     """Client for handling WebSocket connections to the Kalshi API."""

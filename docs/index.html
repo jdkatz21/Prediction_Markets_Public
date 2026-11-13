@@ -162,9 +162,11 @@
         <header>
             <h1>Kalshi-Implied Macroeconomic Expectations</h1>
             <p class="subtitle">Data supporting "Kalshi and The Rise of Macro Markets" (Diercks, Katz, Wright 2026)</p>
-            <p style="color: #555; margin-top: 10px;">Daily probability distributions and statistical moments on
-                macroeconomic expectations of Fed Funds Rates and other macroeconomic variables derived from Kalshi
-                prediction market data.</p>
+            <p style="color: #555; margin-top: 10px;">This website provides daily trade-level, probability
+                distribution, and moments data for Kalshi-implied expectations on the Federal Funds Rate and other
+                macroeconomic releases.</p>
+            <p style="color: #555; margin-top: 10px;">Data updates every morning (around 6am EST) with previous day's
+                trades (days are in UTC).</p>
             <div class="citation">
                 <div class="citation-label">Please cite:</div>
                 <div>Diercks, A., Katz, J., & Wright, J. (2026). Kalshi and The Rise of Macro Markets. <a
@@ -173,26 +175,8 @@
         </header>
 
 
-        <div class="section about">
-            <h2>About This Data</h2>
-            <p>This dataset contains processed data from Kalshi prediction markets, providing daily estimates of
-                market-implied probability distributions for key macroeconomic variables including Federal Funds Rates,
-                CPI (both headline and core), GDP growth, and unemployment rates.</p>
-            <p>The data is derived from trade-level and orderbook-level observations from Kalshi's prediction markets
-                and is updated daily through an automated pipeline. Researchers can use this data to study how market
-                expectations evolve over time and how they respond to economic news and policy announcements.</p>
-            <p><strong>Data Format:</strong> All files are provided as CSV (comma-separated values) files with headers.
-                The distribution files use wide format where each row represents a date and contract, with one column
-                per strike value containing the probability mass at that outcome. The moments files contain summary
-                statistics with one row per date.</p>
-            <p><strong>Update Frequency:</strong> This dataset is updated weekly on Fridays,
-                approximately noon EST.</p>
-        </div>
-
         <div class="section">
             <h2>Explore the Data</h2>
-            <p style="color: #666; margin-bottom: 20px;">Explore how market expectations evolved over time. Select a
-                variable and moment to visualize.</p>
             <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;">
                 <div><label
                         style="display: block; margin-bottom: 5px; font-weight: 600; color: #2c3e50;">Variable</label>
@@ -298,10 +282,7 @@
             <h2>Available Datasets</h2>
             <div class="dataset">
                 <div class="dataset-title">Probability Distributions</div>
-                <div class="dataset-description">Daily probability distributions for each macroeconomic variable. Each
-                    row represents a date and contract, with one column per strike value containing
-                    the probability at that outcome, plus a <code>total_volume</code> column. Only includes contracts
-                    within 2 months of the horizon and excludes the most recent day.</div>
+                <div class="dataset-description">Daily probability distributions for each macroeconomic variable.</div>
                 <div class="file-list">
                     <div class="file-item"><span class="download-icon">⬇</span><a
                             href="https://kalshi-and-the-rise-of-macro-markets.s3.amazonaws.com/daily_distribution_data/wide/daily_distributions_fed_levels.csv"
@@ -329,8 +310,7 @@
             <div class="dataset">
                 <div class="dataset-title">Statistical Moments</div>
                 <div class="dataset-description">Daily summary statistics (mean, variance, skewness, kurtosis, etc.)
-                    computed from the probability distributions. Each row represents one date with multiple statistical
-                    measures.</div>
+                    computed from the probability distributions.</div>
                 <div class="file-list">
                     <div class="file-item"><span class="download-icon">⬇</span><a
                             href="https://kalshi-and-the-rise-of-macro-markets.s3.amazonaws.com/daily_moments_data/daily_moments_fed_levels.csv"
@@ -357,9 +337,7 @@
             </div>
             <div class="dataset">
                 <div class="dataset-title">Raw Trades</div>
-                <div class="dataset-description">Every trade on each Kalshi market, as returned by Kalshi's API. Each
-                    row is one trade, with its market <code>ticker</code>, time, price and size. These are the inputs
-                    to the distributions and moments above.</div>
+                <div class="dataset-description">Every trade on each Kalshi market, as returned by Kalshi's API.</div>
                 <div class="file-list">
                     <div class="file-item"><span class="download-icon">⬇</span><a
                             href="https://kalshi-and-the-rise-of-macro-markets.s3.amazonaws.com/trade_level_data/trade_level_data_fed_levels.csv"
@@ -389,7 +367,7 @@
 
         <footer>
             <p>Data collected and processed using methodology from Diercks, Katz, and Wright (2026)</p>
-            <p style="margin-top: 10px; font-size: 0.85em;">Questions or issues? Please reference the <a
+            <p style="margin-top: 10px; font-size: 0.85em;">Please reference the <a
                     href="https://www.nber.org/papers/w34702" target="_blank" style="color: #3498db;">working paper</a>
                 for methodology details.</p>
         </footer>
@@ -408,13 +386,54 @@
         let useDualAxis = true;
         let cachedDistributionData = null;
 
+        // Where the charts read their data. Open the page with ?data=staging to
+        // preview the files the test pipeline writes to the staging folder.
+        const BUCKET_URL = 'https://kalshi-and-the-rise-of-macro-markets.s3.amazonaws.com';
+        const DATA_URL = new URLSearchParams(window.location.search).get('data') === 'staging'
+            ? `${BUCKET_URL}/staging`
+            : BUCKET_URL;
+
+        // ============================================
+        // CHART STYLE (matches the figures in the paper)
+        // ============================================
+        const PAPER_BLUE = '#0000ff';
+        const PAPER_RED = '#d62728';
+        const PAPER_FONT = { family: '"DejaVu Sans", Verdana, Geneva, sans-serif', color: '#000', size: 13 };
+
+        // Black frame on all four sides, ticks pointing inward, no gridlines
+        function paperAxis(title, extra = {}) {
+            return {
+                title: { text: title, font: { size: 15 } },
+                showline: true,
+                linecolor: '#000',
+                linewidth: 1.5,
+                mirror: 'ticks',
+                ticks: 'inside',
+                ticklen: 7,
+                tickwidth: 1.5,
+                tickcolor: '#000',
+                showgrid: false,
+                zeroline: false,
+                ...extra
+            };
+        }
+
+        function paperLayout(title) {
+            return {
+                title: { text: title, font: { size: 20 } },
+                font: PAPER_FONT,
+                plot_bgcolor: 'white',
+                paper_bgcolor: 'white'
+            };
+        }
+
         // ============================================
         // UTILITY FUNCTIONS
         // ============================================
 
         async function loadLastUpdated() {
             try {
-                const response = await fetch('https://kalshi-and-the-rise-of-macro-markets.s3.amazonaws.com/last_updated.txt');
+                const response = await fetch(`${DATA_URL}/last_updated.txt`);
                 const text = await response.text();
                 document.getElementById('lastUpdated').innerHTML = `<strong>Last Updated:</strong> ${text.trim()}`;
             } catch (error) {
@@ -423,7 +442,7 @@
         }
 
         async function loadChartData(variable) {
-            const url = `https://kalshi-and-the-rise-of-macro-markets.s3.amazonaws.com/daily_moments_data/daily_moments_${variable}.csv`;
+            const url = `${DATA_URL}/daily_moments_data/daily_moments_${variable}.csv`;
             try {
                 const response = await fetch(url);
                 const text = await response.text();
@@ -456,6 +475,12 @@
             if (parts.length < 2) return contract;
 
             const dateStr = parts[1];
+
+            // Annual contracts have only a year, e.g. ACPI-24 or KXACPI-2025
+            if (/^\d+$/.test(dateStr)) {
+                return dateStr.length === 2 ? '20' + dateStr : dateStr;
+            }
+
             const year = '20' + dateStr.substring(0, 2);
             const monthCode = dateStr.substring(2);
 
@@ -481,11 +506,44 @@
             return titles[variable] || variable;
         }
 
+        // Short names for chart titles, as in the paper's figures
+        // (e.g. "Distribution for March 2026 CPI, as of April 9th")
+        function getShortName(variable) {
+            const names = {
+                'core_cpi_releases': 'Core CPI',
+                'fed_levels': 'Fed Funds Rate',
+                'gdp_end_of_year': 'GDP Growth',
+                'headline_cpi_end_of_year': 'Year-End CPI',
+                'headline_cpi_releases_mom': 'CPI (MoM)',
+                'headline_cpi_releases': 'CPI',
+                'unemployment_releases': 'Unemployment'
+            };
+            return names[variable] || getVariableTitle(variable);
+        }
+
+        function getContractTitle(variable, contract) {
+            return `${parseContractToQuestion(contract)} ${getShortName(variable)}`;
+        }
+
+        // "2026-04-09" -> "April 9th"; the year is added only when it differs from the contract's
+        function formatAsOfDate(dateStr, contract) {
+            const [year, month, day] = dateStr.split('-').map(Number);
+            const monthName = new Date(Date.UTC(year, month - 1, day))
+                .toLocaleString('en-US', { month: 'long', timeZone: 'UTC' });
+            const suffix = (day % 100 >= 11 && day % 100 <= 13) ? 'th'
+                : ({ 1: 'st', 2: 'nd', 3: 'rd' }[day % 10] || 'th');
+            const contractYear = parseContractToQuestion(contract).slice(-4);
+            return `${monthName} ${day}${suffix}` + (String(year) === contractYear ? '' : `, ${year}`);
+        }
+
         function getContractSortValue(contract) {
             const parts = contract.split('-');
             if (parts.length < 2) return 0;
 
             const dateStr = parts[1];
+            if (/^\d+$/.test(dateStr)) {
+                return (dateStr.length === 2 ? parseInt(dateStr) : parseInt(dateStr) % 100) * 100 + 12;
+            }
             const year = parseInt(dateStr.substring(0, 2));
             const monthCode = dateStr.substring(2);
 
@@ -544,7 +602,7 @@
         // ============================================
 
         async function loadDistributionData(variable, contract, date) {
-            const url = `https://kalshi-and-the-rise-of-macro-markets.s3.amazonaws.com/daily_distribution_data/daily_distributions_${variable}.csv`;
+            const url = `${DATA_URL}/daily_distribution_data/daily_distributions_${variable}.csv`;
             try {
                 const response = await fetch(url);
                 const text = await response.text();
@@ -556,6 +614,45 @@
                 console.error('Error loading distribution data:', error);
                 return null;
             }
+        }
+
+        // Number of empty bins shown on each side of the bins with probability (counting the
+        // edge bin); bins further out are folded into the edge bins
+        const EMPTY_BINS_SHOWN = 2;
+
+        // Turns the sorted strikes and probabilities into labeled bars. Each strike's
+        // probability is for the range up to the next strike. The lowest row is a placeholder
+        // one step below Kalshi's lowest strike, holding the chance of being at or below that
+        // lowest strike; the highest row is the chance of being above the highest strike.
+        function buildBins(strikes, probs) {
+            const n = strikes.length;
+            const lower = i => (i === 0 ? -Infinity : strikes[i]);
+            const upper = i => (i === n - 1 ? Infinity : strikes[i + 1]);
+            const sum = (from, to) => probs.slice(from, to + 1).reduce((a, b) => a + b, 0);
+
+            let first = 0, last = n - 1;
+            const withProbability = probs.map((p, i) => (p > 0 ? i : null)).filter(i => i !== null);
+            if (withProbability.length > 0) {
+                // Fold everything beyond the kept empty bins into the edge bins
+                first = Math.max(0, withProbability[0] - EMPTY_BINS_SHOWN);
+                last = Math.min(n - 1, withProbability[withProbability.length - 1] + EMPTY_BINS_SHOWN);
+            }
+
+            const bins = [];
+            for (let i = first; i <= last; i++) {
+                const lo = i === first ? -Infinity : lower(i);
+                const hi = i === last ? Infinity : upper(i);
+                const p = i === first ? sum(0, i) : i === last ? sum(i, n - 1) : probs[i];
+                bins.push({ lo, hi, p });
+            }
+
+            return {
+                binLabels: bins.map(b =>
+                    b.lo === -Infinity ? `≤${b.hi.toFixed(2)}`
+                        : b.hi === Infinity ? `>${b.lo.toFixed(2)}`
+                            : `${b.lo.toFixed(2)}-${b.hi.toFixed(2)}`),
+                probabilities: bins.map(b => b.p)
+            };
         }
 
         async function showDistribution(variable, contract, date) {
@@ -581,13 +678,8 @@
             distributionData.sort((a, b) => parseFloat(a.strike) - parseFloat(b.strike));
 
             const strikes = distributionData.map(row => parseFloat(row.strike));
-            const probabilities = distributionData.map(row => parseFloat(row.probability));
-
-            const binLabels = strikes.map((strike, i) => {
-                if (i === 0) return `< ${strike.toFixed(2)}`;
-                if (i === strikes.length - 1) return `≥ ${strike.toFixed(2)}`;
-                return `${strike.toFixed(2)} - ${strikes[i + 1].toFixed(2)}`;
-            });
+            const { binLabels, probabilities } = buildBins(
+                strikes, distributionData.map(row => parseFloat(row.probability)));
 
             const trace = {
                 x: binLabels,
@@ -595,20 +687,23 @@
                 type: 'bar',
                 text: probabilities.map(p => `${p.toFixed(1)}%`),
                 textposition: 'outside',
-                marker: { color: '#3498db', line: { color: '#2980b9', width: 1 } },
+                textfont: { color: '#000', size: 13 },
+                cliponaxis: false,
+                marker: { color: PAPER_BLUE, line: { color: '#000', width: 1 } },
                 hovertemplate: '%{x}<br>Probability: %{y:.2f}%<extra></extra>'
             };
 
+            // Fixed 0-100 scale so dates are comparable as the slider moves; the frame sits a
+            // little above 100 so the label on a bar near 100% stays inside it
             const layout = {
-                title: {
-                    text: `Distribution for ${getVariableTitle(variable)} - ${parseContractToQuestion(contract)} on ${date}`,
-                    font: { size: 16, color: '#2c3e50' }
-                },
-                xaxis: { title: 'Outcome Range', gridcolor: '#f0f0f0' },
-                yaxis: { title: 'Probability (%)', gridcolor: '#f0f0f0' },
-                plot_bgcolor: '#fafafa',
-                paper_bgcolor: 'white',
-                margin: { t: 60, r: 40, b: 60, l: 80 },
+                ...paperLayout(`Distribution for ${getContractTitle(variable, contract)}, as of ${formatAsOfDate(date, contract)}`),
+                xaxis: paperAxis('Outcome Range', { ticks: '', tickfont: { size: 12 } }),
+                yaxis: paperAxis('Probability (%)', {
+                    range: [0, 112],
+                    tickvals: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+                }),
+                bargap: 0.2,
+                margin: { t: 60, r: 40, b: 70, l: 80 },
                 width: chartDiv.parentElement.offsetWidth,
             };
 
@@ -642,11 +737,11 @@
 
             if (!selectedContract) return;
 
+            // Every posted day is complete (the pipeline adds each day the following
+            // morning), so the most recent day is shown too
             let contractData = currentData.data.filter(row =>
                 row.contract_preamble === selectedContract
             );
-
-            contractData = contractData.slice(0, -1);
 
             const fedLevelsCutoffs = { 0: 1.5, 1: 4 };
             if (variable === 'fed_levels') {
@@ -672,9 +767,9 @@
                 y: values,
                 type: 'scatter',
                 mode: 'lines+markers',
-                name: `${getVariableTitle(variable)} - ${parseContractToQuestion(selectedContract)}`,
-                line: { color: '#3498db', width: 2 },
-                marker: { size: 4, color: '#3498db' },
+                name: getContractTitle(variable, selectedContract),
+                line: { color: PAPER_BLUE, width: 2 },
+                marker: { size: 4, color: PAPER_BLUE },
                 hovertemplate: '<b>%{x}</b><br>' + moment + ': %{y:.4f}<extra></extra>',
                 yaxis: 'y'
             };
@@ -699,9 +794,9 @@
                         y: values2,
                         type: 'scatter',
                         mode: 'lines+markers',
-                        name: `${getVariableTitle(variable2)} - ${parseContractToQuestion(selectedContract2)}`,
-                        line: { color: '#e74c3c', width: 2 },
-                        marker: { size: 4, color: '#e74c3c' },
+                        name: getContractTitle(variable2, selectedContract2),
+                        line: { color: PAPER_RED, width: 2 },
+                        marker: { size: 4, color: PAPER_RED },
                         hovertemplate: '<b>%{x}</b><br>' + moment2 + ': %{y:.4f}<extra></extra>',
                         yaxis: useDualAxis ? 'y2' : 'y'
                     };
@@ -710,52 +805,44 @@
                 }
             }
 
-            const title = showComparison && traces.length > 1
-                ? 'Comparison Chart'
-                : `${getVariableTitle(variable)} - ${parseContractToQuestion(selectedContract)} - ${moment.charAt(0).toUpperCase() + moment.slice(1)}`;
+            const momentName = moment.charAt(0).toUpperCase() + moment.slice(1);
+            const comparing = showComparison && traces.length > 1;
+            const dualAxis = comparing && useDualAxis;
+
+            const title = comparing
+                ? 'Comparison'
+                : `${momentName} of ${getContractTitle(variable, selectedContract)}`;
+
+            const yTitle = dualAxis
+                ? `${momentName} (${getContractTitle(variable, selectedContract)})`
+                : comparing ? 'Value' : momentName;
 
             const layout = {
-                title: {
-                    text: title,
-                    font: { size: 18, color: '#2c3e50' }
-                },
-                xaxis: {
-                    title: 'Date',
-                    gridcolor: '#f0f0f0',
-                    domain: [0, 1]
-                },
-                yaxis: {
-                    title: showComparison && traces.length > 1 && useDualAxis
-                        ? `${moment.charAt(0).toUpperCase() + moment.slice(1)} (${parseContractToQuestion(selectedContract)})`
-                        : showComparison && traces.length > 1
-                            ? 'Value'
-                            : moment.charAt(0).toUpperCase() + moment.slice(1),
-                    titlefont: showComparison && traces.length > 1 && useDualAxis
-                        ? { color: '#3498db' }
-                        : { color: '#2c3e50' },
-                    tickfont: showComparison && traces.length > 1 && useDualAxis
-                        ? { color: '#3498db' }
-                        : { color: '#2c3e50' },
-                    gridcolor: '#f0f0f0'
-                },
+                ...paperLayout(title),
+                xaxis: paperAxis('Date', { domain: [0, 1] }),
+                // With a second y-axis on the right, the left axis keeps its own frame side only
+                yaxis: paperAxis(yTitle, dualAxis
+                    ? { mirror: false, title: { text: yTitle, font: { size: 15, color: PAPER_BLUE } }, tickfont: { color: PAPER_BLUE } }
+                    : {}),
                 hovermode: 'closest',
-                plot_bgcolor: '#fafafa',
-                paper_bgcolor: 'white',
                 margin: { t: 60, r: 80, b: 60, l: 80 },
-                showlegend: showComparison && traces.length > 1
+                showlegend: comparing,
+                legend: { bgcolor: 'white', bordercolor: '#000', borderwidth: 1, x: 0.01, y: 0.99 }
             };
 
-            if (showComparison && traces.length > 1 && useDualAxis) {
+            if (dualAxis) {
                 const moment2 = document.getElementById('momentSelect2').value;
+                const variable2 = document.getElementById('variableSelect2').value;
                 const selectedContract2 = document.getElementById('contractSelect2').value;
+                const y2Title = `${moment2.charAt(0).toUpperCase() + moment2.slice(1)} (${getContractTitle(variable2, selectedContract2)})`;
 
-                layout.yaxis2 = {
-                    title: `${moment2.charAt(0).toUpperCase() + moment2.slice(1)} (${parseContractToQuestion(selectedContract2)})`,
-                    titlefont: { color: '#e74c3c' },
-                    tickfont: { color: '#e74c3c' },
+                layout.yaxis2 = paperAxis(y2Title, {
+                    mirror: false,
+                    title: { text: y2Title, font: { size: 15, color: PAPER_RED } },
+                    tickfont: { color: PAPER_RED },
                     overlaying: 'y',
                     side: 'right'
-                };
+                });
             }
 
             const config = {

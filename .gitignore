@@ -2,7 +2,10 @@ env.env
 key.txt
 code/polymarket_fed_trades.csv
 code/polymarket_fed_trades.csv.gz
-data/
+# Data files are never committed; only the empty folders the scripts write to are
+data/**
+!data/**/
+!data/**/.gitkeep
 output/
 tables/
 

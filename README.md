@@ -1,38 +1,16 @@
 # Replication Package for Kalshi and the Rise of Macro Markets (2026)
 
-Note: In March 2026 Kalshi split its API into historical and live endpoints, with trades moving to the historical endpoint after a cutoff (about 100 days at the time of writing). The scraper pulls each market's trades from both endpoints and combines them, so the full trade history is downloaded.
-
 ## Overview
 
 This replication package constructs the data from Kalshi used in *Diercks, Katz, Wright (2026)* using Python and R. It also creates a small website and GitHub Action that highlights the data and continually updates it over time.
 
-To construct the dataset from scratch (downloading raw trade data from Kalshi and converting it into forecasts), the process takes approximately **1.5 hours**.
-
-The website updates via a GitHub Action every Friday afternoon, pulling the most recent data, rerunning the methodology to generate forecasts, and updating the website with the latest results.
+Constructing the full dataset from scratch through present-day takes approximately 1.5 hours (as of November 2026).
 
 ---
 
 ## Data Availability
 
-All Kalshi data is pulled from their public API. Replicators will need to establish their own API credentials (stored as environment variables) to connect, but there is no private data involved. Permission from Kalshi to use the data for research purposes has been granted. Kalshi's data licensing agreement is included in this repository as `/API Developer Agreement.pdf`.
-
-This package contains only the Kalshi data used in the paper. Fed Funds Futures and Bloomberg data were used as property of/licensed by the Federal Reserve Board and are not included. Survey of Primary Dealers data can be accessed publicly via the NY Fed. The replication archive is limited to work and figures involving Kalshi data only.
-
-The data is not stored in this repository. All of the Kalshi data below, raw and derived, can be downloaded from [econfutures.com](https://econfutures.com), where it is kept up to date as new trades arrive. Everything can also be regenerated with the code in this repository.
-
-| Data file | Source | Notes | Provided |
-|-----------|--------|-------|----------|
-| `data/trade_level_data` | Kalshi | Raw trade-level data | Yes, at econfutures.com (w/ code to generate updates) |
-| `data/orderbook_data` | Kalshi | Raw orderbook data | Yes, at econfutures.com (w/ code to generate updates) |
-| `data/daily_distribution_data` | Kalshi | Derived daily-frequency distributions | Yes, at econfutures.com (w/ code to generate from `trade_level_data`) |
-| `data/daily_moments_data` | Kalshi | Derived daily-frequency moments | Yes, at econfutures.com (w/ code to generate from `trade_level_data`) |
-| `data/daily_bid_ask_distribution_data` | Kalshi | Derived daily-frequency bid/ask distributions | Yes, at econfutures.com (w/ code to generate from `orderbook_data`) |
-| `data/daily_bid_ask_moments_data` | Kalshi | Derived daily-frequency bid/ask moments | Yes, at econfutures.com (w/ code to generate from `orderbook_data`) |
-| Bloomberg Economic Releases | Bloomberg | — | No |
-| Bloomberg Consensus Forecasts | Bloomberg | — | No |
-| Survey of Primary Dealers Forecasts | NY Fed | — | No |
-| Federal Funds Rate Futures | CME | — | No |
-| SOFR Rates | CME | — | No |
+Kalshi data for some macroeconomic series can be explored and visualized directly on [econfutures.com](https://econfutures.com), which is updated regularly.
 
 ---
 
@@ -110,12 +88,12 @@ install.packages(c("tidyverse", "lubridate", "matrixStats", "collapse", "DescToo
 # R setup
 - name: Set up R
   uses: r-lib/actions/setup-r@v2
+  with:
+    use-public-rspm: true
 
 - name: Install R dependencies
   run: |
-    install.packages(c("tidyverse", "lubridate", "matrixStats", "collapse", "DescTools"),
-                    repos = c("https://packagemanager.posit.co/cran/__linux__/jammy/latest",
-                             "https://cloud.r-project.org"))
+    install.packages(c("tidyverse", "lubridate", "matrixStats", "collapse", "DescTools"))
   shell: Rscript {0}
 
 - name: Run R script to convert to PDFs and Moments Data
@@ -126,7 +104,7 @@ install.packages(c("tidyverse", "lubridate", "matrixStats", "collapse", "DescToo
 
 ## Citation
 
-If you use this package, please cite:
+If you use this code, please cite:
 
 > Diercks, Katz, Wright (2026). *Kalshi and the Rise of Macro Markets.* NBER Working Paper.
 > https://www.nber.org/papers/w34702

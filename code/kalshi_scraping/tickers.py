@@ -11,6 +11,14 @@ Input: series_ticker (str): The series ticker.
 
 import requests
 import time
+import os
+import sys
+import time
+import pandas as pd
+from dotenv import load_dotenv
+from cryptography.hazmat.primitives import serialization
+
+
 
 
 BASE_URL = "https://api.elections.kalshi.com/trade-api/v2"
@@ -59,6 +67,48 @@ def autogenerate_kalshi_tickers(series_ticker):
     tickers.update(m["ticker"] for m in live_markets)
 
     return list(tickers)
+
+def get_market_info(ticker_list, output_path):
+
+    from clients_kalshi import KalshiHttpClient, KalshiWebSocketClient, Environment
+
+    if os.path.exists('env.env'):
+        load_dotenv('env.env')
+    KEYID = os.getenv("KALSHI_KEYID")
+    PRIVATE_KEY_STR = os.getenv("KALSHI_PRIVATE_KEY")
+
+    with open(PRIVATE_KEY_STR, "rb") as f:
+            private_key = serialization.load_pem_private_key(f.read(), password=None)
+
+    client = KalshiHttpClient(
+            key_id=KEYID,
+            private_key=private_key,
+            environment=Environment.PROD
+        )
+    
+    rows = []
+
+    for ticker in ticker_list:
+        try:
+            data = client.get_market(ticker)
+            rows.append({
+                "ticker": ticker,
+                "status": data.get("status"),
+                "result": data.get("result"),
+            })
+
+        except Exception as e:
+            print(e)
+            rows.append({
+                "ticker": ticker,
+                "status": None,
+                "result": None,
+            })
+
+    df = pd.DataFrame(rows)
+    df.to_csv(output_path)
+
+    return(rows)
 
 """
 This file gives some sample sets of tickers that you might want to download.
