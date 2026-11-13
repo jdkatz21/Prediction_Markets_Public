@@ -31,7 +31,14 @@ read_bid_ask <- function(input_file, filter_large_spreads = T) {
       yes_price = (yes_bid_close + yes_ask_close) / 2
     )
   
-  # If the flag is turned on, remove anything with a bid-ask spread of more than 15
+  # As of March 2026 Kalshi now uses prices between 0-1 instead of 1-100
+  # instead of yes_price and no_price. Convert
+  df <- df %>%
+    mutate(yes_price = yes_price * 100,
+           yes_bid_close = yes_bid_close * 100, 
+           yes_ask_close = yes_ask_close * 100)
+  
+  # If the flag is turned on, remove anything with a bid-ask spread of more than 10
   if(filter_large_spreads == TRUE) {
     
     df <- df %>% mutate(large_spread = abs(yes_bid_close - yes_ask_close) > 10)
@@ -62,89 +69,6 @@ read_bid_ask <- function(input_file, filter_large_spreads = T) {
   
   return(df)
 }
-
-# 
-# convert_trade_level_data_cdfs.R
-# 
-# Author: Anthony M. Diercks, Jared Dean Katz
-# Affiliation: Federal Reserve Board of Governors, Northwestern University Kellogg School of Businesss
-# Contact: jared.katz@kellogg.northwestern.edu
-# Date: July 2025
-# 
-# Description:
-# -------------
-# This script uses the Kalshi API to download and archive all contracts where
-# there are increasing strikes.
-# It is designed for researchers to be able to obtain current
-# prediction market data.
-# 
-# 
-# Usage:
-# ------
-# 
-# Dependencies:
-# -------------
-# - R version 4.3.0
-# - Kalshi API
-# 
-# 
-# License & Citation:
-# --------------------
-# This script is distributed under the MIT License (see LICENSE file).
-# If you use this script or data collected with it in published work,
-# please cite:
-#     
-# Diercks, Katz, Wright (2026) 
-# 
-# with use.
-# 
-# Disclaimer:
-# -----------
-# This is academic software provided 'as is', without warranty of any kind.
-# Use at your own risk and verify data with official sources where appropriate.
-# 
-# Reproducibility:
-# ----------------
-# 
-# Run on Macbook M1 in R Studio environment using R version 4.3.0
-
-##################################
-##     Package Installation     ##
-##################################
-
-library(tidyverse)
-library(lubridate)
-library(matrixStats)
-library(collapse)
-
-# setwd('/Users/jaredkatz/Documents/Research/PredictionMarketsPublic')
-
-#' Read and process trade-level data from CSV file
-#'
-#' @param input_file Path to the CSV file to be read.
-#' @return A data frame with parsed datetime, extracted contract preamble, strike price, and sorted data.
-read_data <- function(input_file) {
-  
-  df <- read_csv(input_file)
-  
-  # Convert datetime and extract date
-  df <- df %>%
-    mutate(created_time = as.POSIXct(created_time, format = "%Y-%m-%dT%H:%M:%OSZ", tz = "UTC"),
-           date = as.Date(created_time))
-  
-  # Extract contract_preamble (e.g., FED-22DEC) and strike price
-  df <- df %>%
-    mutate(
-      contract_preamble = str_extract(ticker, "^[^-]+(?:-[^-]+)*"),
-      contract_preamble = str_replace(contract_preamble, "-T\\d+\\.?\\d*$", ""),
-      contract_preamble = ifelse(contract_preamble == 'FED-22JULY', 'FED-22JUL', contract_preamble),
-      strike = as.numeric(str_extract(ticker, "(?<=-T)\\d+\\.?\\d*"))
-    ) %>%
-    arrange(contract_preamble, strike, date)
-  
-  return(df)
-}
-
 
 #' Fill missing days in daily data with last known price (from a previous day)
 #'
@@ -501,7 +425,7 @@ get_moments <- function(df, moment_adjustment) {
 #' correctly interpreted as the corresponding events where they would pay off
 #' @return No return value. Writes processed data to specified output files.
 extract_distributions <- function(input_file, output_distributions, output_moments, strike_int,
-                                  days_before_horizon, end_date = as.Date('2025-10-01'),
+                                  days_before_horizon, end_date = as.Date('2026-07-01'),
                                   moment_adjustment=0) {
   
   df <- read_bid_ask(input_file = input_file)
