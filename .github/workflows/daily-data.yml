@@ -1,9 +1,9 @@
-name: Daily Data Update
+name: Full Data Rebuild
 
+# Re-downloads every trade from scratch with the replication scripts. The website
+# is kept up to date daily by live-data.yml; run this manually if needed.
 on:
-  schedule:
-    - cron: "5 17 * * 5" 
-  workflow_dispatch:       # allow manual triggering too
+  workflow_dispatch:
 
 jobs:
   update-data:
