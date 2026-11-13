@@ -591,9 +591,3 @@ extract_distributions <- function(input_file, output_distributions, output_momen
 #                       output_moments = 'data/daily_moments_data_middle_out/daily_moments_core_cpi_releases.csv',
 #                       strike_int = 0.1,
 #                       days_before_horizon = 30)
-
-# extract_distributions(input_file = 'data/trade_level_data/trade_level_data_gdp_quarterly.csv',
-#                       output_distributions = 'data/daily_distribution_data_middle_out/daily_distributions_gdp_quarterly.csv',
-#                       output_moments = 'data/daily_moments_data_middle_out/daily_moments_gdp_quarterly.csv',
-#                       strike_int = 0.1,
-#                       days_before_horizon = 30)
