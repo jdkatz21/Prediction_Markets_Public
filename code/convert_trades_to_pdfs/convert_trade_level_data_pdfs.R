@@ -147,8 +147,9 @@ fill_dataless_days <- function(df) {
     ungroup()
 
   # fill NA rows with last price and fill in 0 for daily volume on these days
+  # (within each contract, so one contract's prices never carry into another's)
   df <- df %>%
-    group_by(strike) %>%
+    group_by(contract_preamble, strike) %>%
     fill(yes_price, .direction = "down") %>%
     ungroup() %>%
     mutate(
