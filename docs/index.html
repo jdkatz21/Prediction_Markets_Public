@@ -204,7 +204,7 @@
                         <option value="mean">Mean</option>
                         <option value="median">Median</option>
                         <option value="mode">Mode</option>
-                        <option value="variance">Variance</option>
+                        <option value="variance" selected>Variance</option>
                         <option value="skewness">Skewness</option>
                         <option value="kurtosis">Kurtosis</option>
                     </select>
@@ -748,22 +748,6 @@
                 row.contract_preamble === selectedContract
             );
 
-            const fedLevelsCutoffs = { 0: 1.5, 1: 4 };
-            if (variable === 'fed_levels') {
-                const contractIndex = availableContracts.indexOf(selectedContract);
-                const monthsCutoff = fedLevelsCutoffs[contractIndex] ?? 5;
-                if (monthsCutoff) {
-                    const allDates = contractData.map(row => row.date).sort();
-                    if (allDates.length > 0) {
-                        const latestDate = new Date(allDates[allDates.length - 1]);
-                        const cutoff = new Date(latestDate);
-                        cutoff.setMonth(cutoff.getMonth() - monthsCutoff);
-                        const cutoffStr = cutoff.toISOString().split('T')[0];
-                        contractData = contractData.filter(row => row.date >= cutoffStr);
-                    }
-                }
-            }
-
             const dates = contractData.map(row => row.date);
             const values = contractData.map(row => parseFloat(row[moment]));
 
@@ -911,6 +895,27 @@
             document.getElementById('loadingMessage').style.display = 'none';
         }
 
+        // The contract that closes next: the earliest expiry_date that is today (UTC) or later.
+        // The annual series have no scheduled close dates, so for them this falls back to the
+        // contract for the nearest period by name (e.g. this year's GDP), and then to the first
+        // contract in the list if every contract is in the past.
+        function getNextContract(data, contracts) {
+            const now = new Date();
+            const today = now.toISOString().split('T')[0];
+            const expiry = {};
+            data.forEach(row => { expiry[row.contract_preamble] = row.expiry_date; });
+            const upcoming = contracts
+                .filter(c => expiry[c] && expiry[c] >= today)
+                .sort((a, b) => expiry[a].localeCompare(expiry[b]));
+            if (upcoming.length > 0) return upcoming[0];
+
+            const thisMonth = (now.getUTCFullYear() % 100) * 100 + (now.getUTCMonth() + 1);
+            const byName = contracts
+                .filter(c => getContractSortValue(c) >= thisMonth)
+                .sort((a, b) => getContractSortValue(a) - getContractSortValue(b));
+            return byName.length > 0 ? byName[0] : contracts[0];
+        }
+
         function populateContractDropdown() {
             if (!currentData) return;
 
@@ -924,6 +929,9 @@
             contractSelect.innerHTML = contracts.map(contract =>
                 `<option value="${contract}">${parseContractToQuestion(contract)}</option>`
             ).join('');
+            if (contracts.length > 0) {
+                contractSelect.value = getNextContract(currentData.data, contracts);
+            }
 
             if (contracts.length > 0) {
                 updateChart();
@@ -943,6 +951,9 @@
             contractSelect.innerHTML = contracts.map(contract =>
                 `<option value="${contract}">${parseContractToQuestion(contract)}</option>`
             ).join('');
+            if (contracts.length > 0) {
+                contractSelect.value = getNextContract(currentData2.data, contracts);
+            }
 
             if (contracts.length > 0) {
                 updateChart();
