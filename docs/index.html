@@ -69,6 +69,47 @@
             text-decoration: underline;
         }
 
+        .bibtex {
+            margin-top: 10px;
+        }
+
+        .bibtex summary {
+            cursor: pointer;
+            color: #3498db;
+            font-size: 0.9em;
+        }
+
+        .bibtex-box {
+            position: relative;
+            margin-top: 8px;
+        }
+
+        .bibtex pre {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 12px;
+            font-size: 0.8em;
+            line-height: 1.4;
+            overflow-x: auto;
+        }
+
+        .bibtex button {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            padding: 3px 10px;
+            font-size: 0.8em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #f8f9fa;
+            cursor: pointer;
+        }
+
+        .bibtex button:hover {
+            background: #e9ecef;
+        }
+
         .section {
             background: white;
             padding: 30px;
@@ -172,6 +213,23 @@
                 <div class="citation-label">Please cite:</div>
                 <div>Diercks, A., Katz, J., & Wright, J. (2026). Kalshi and The Rise of Macro Markets. <a
                         href="https://www.nber.org/papers/w34702" target="_blank">NBER Working Paper No. 34702</a></div>
+                <details class="bibtex">
+                    <summary>BibTeX</summary>
+                    <div class="bibtex-box">
+                        <button type="button" id="copyBibtex">Copy</button>
+                        <pre id="bibtexText">@techreport{diercks2026kalshi,
+  title       = {Kalshi and the Rise of Macro Markets},
+  author      = {Diercks, Anthony M. and Katz, Jared Dean and Wright, Jonathan H.},
+  institution = {National Bureau of Economic Research},
+  type        = {Working Paper},
+  number      = {34702},
+  year        = {2026},
+  month       = jan,
+  doi         = {10.3386/w34702},
+  url         = {https://www.nber.org/papers/w34702}
+}</pre>
+                    </div>
+                </details>
             </div>
         </header>
 
@@ -1033,6 +1091,24 @@
         }
 
         loadLastUpdated();
+
+        // Copy the BibTeX entry
+        document.getElementById('copyBibtex').addEventListener('click', function () {
+            const button = this;
+            const text = document.getElementById('bibtexText').textContent;
+            const done = () => { button.textContent = 'Copied'; setTimeout(() => { button.textContent = 'Copy'; }, 1500); };
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(done);
+            } else {
+                const area = document.createElement('textarea');
+                area.value = text;
+                document.body.appendChild(area);
+                area.select();
+                document.execCommand('copy');
+                document.body.removeChild(area);
+                done();
+            }
+        });
     </script>
 </body>
 

@@ -7,7 +7,9 @@ name: Live Data Update
 # and uploads the result back to S3.
 on:
   schedule:
-    - cron: "0 11 * * *"   # every day, 11:00 UTC (6am EST / 7am EDT)
+    # GitHub often starts scheduled runs hours late, and later still on the hour,
+    # so ask early and at an odd minute
+    - cron: "13 8 * * *"   # every day, 08:13 UTC (3:13am EST / 4:13am EDT)
   workflow_dispatch:       # allow manual triggering too
 
 # Never run two updates at once; a second run waits for the first
